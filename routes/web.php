@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SectorController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,11 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('/')->group(function () {
+    Route::get('{sector}', [SectorController::class, 'index'])
+        ->where('sector', 'vegetable|medicalplant|fruit|livestock|fish');
 });
 
 Route::get('/', [HomeController::class, 'index']);
