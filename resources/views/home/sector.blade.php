@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_name', 'HOME')
+@section('page_name', $page)
 @section('content')
 @php
 use Illuminate\Support\Str;
@@ -76,7 +76,8 @@ use Illuminate\Support\Str;
     <!-- Stats Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8">
         <!-- Total Harvested Card -->
-        <div class="stats-card relative bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+        <div
+            class="stats-card relative bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
             <div class="card-header bg-gradient-to-r from-green-500 to-green-600 p-4 ">
                 <div class="flex items-center justify-center">
 
@@ -88,11 +89,14 @@ use Illuminate\Support\Str;
                     <div class="icon-section">
                         <div class="icon-circle md:ml-12">
                             @if ($selectedCommodity && $gambar)
-                                    <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas" class="size-28  rounded-xl "  >
+                            <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas"
+                                class="size-28  rounded-xl ">
                             @else
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-green-600" viewBox="0 0 512 512">
-                                    <path fill="currentColor" d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/>
-                                </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-green-600"
+                                viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                    d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
+                            </svg>
                             @endif
                         </div>
                     </div>
@@ -105,7 +109,8 @@ use Illuminate\Support\Str;
                             <p class="text-2xl font-bold text-green-600 mb-1">
                                 {{ number_format($totalHarvestPerKec ?? 0, 2, ',', '.') }} Kg
                             </p>
-                            <div class="status-badge bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
+                            <div
+                                class="status-badge bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
                                 Berhasil Dipanen
                             </div>
                         </div>
@@ -117,7 +122,8 @@ use Illuminate\Support\Str;
         </div>
 
         <!-- Not Harvested Yet Card -->
-        <div class="stats-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+        <div
+            class="stats-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
             <div class="card-header bg-gradient-to-r from-amber-500 to-amber-600 p-4">
                 <div class="flex items-center justify-center">
                     <h3 class="text-xl font-bold text-white text-center">Total Belum Panen</h3>
@@ -126,14 +132,16 @@ use Illuminate\Support\Str;
             <div class="card-body p-6">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                     <div class="icon-circle md:ml-12">
-                            @if ($selectedCommodity && $gambar)
-                                    <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar-komoditas" class="size-28  rounded-xl "  >
-                            @else
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-yellow-600" viewBox="0 0 512 512">
-                                    <path fill="currentColor" d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/>
-                                </svg>
-                            @endif
-                        </div>
+                        @if ($selectedCommodity && $gambar)
+                        <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar-komoditas"
+                            class="size-28  rounded-xl ">
+                        @else
+                        <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-yellow-600" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
+                        </svg>
+                        @endif
+                    </div>
                     <div class="content-section text-center md:text-left flex-1 ">
                         <p class="text-sm text-gray-600 mb-1">Komoditas</p>
                         <p class="text-lg font-semibold text-gray-800 mb-2">
@@ -150,7 +158,8 @@ use Illuminate\Support\Str;
                                     ({{ number_format($belumPaneninKg ?? 0, 2, ',', '.') }} Kg)
                                 </span>
                             </div>
-                            <div class="status-badge bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
+                            <div
+                                class="status-badge bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
                                 Dalam Proses
                             </div>
                         </div>
@@ -160,7 +169,8 @@ use Illuminate\Support\Str;
         </div>
 
         <!-- Late Harvest Card -->
-        <div class="stats-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+        <div
+            class="stats-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
             <div class="card-header bg-gradient-to-r from-red-500 to-red-600 p-4">
                 <div class="flex items-center justify-center">
                     <h3 class="text-xl font-bold text-white text-center">Total Terlambat Panen</h3>
@@ -169,14 +179,16 @@ use Illuminate\Support\Str;
             <div class="card-body p-6">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                     <div class="icon-circle md:ml-12">
-                            @if ($selectedCommodity && $gambar)
-                                    <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas" class="size-28  rounded-xl "  >
-                            @else
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-red-600" viewBox="0 0 512 512">
-                                    <path fill="currentColor" d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z"/>
-                                </svg>
-                            @endif
-                        </div>
+                        @if ($selectedCommodity && $gambar)
+                        <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas"
+                            class="size-28  rounded-xl ">
+                        @else
+                        <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-red-600" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
+                        </svg>
+                        @endif
+                    </div>
                     <div class="content-section text-center md:text-left flex-1">
                         <p class="text-sm text-gray-600 mb-1">Komoditas</p>
                         <p class="text-lg font-semibold text-gray-800 mb-2">
@@ -186,7 +198,8 @@ use Illuminate\Support\Str;
                             <p class="text-2xl font-bold text-red-600 mb-1">
                                 {{ number_format($terlambatPanen ?? 0, 2, ',', '.') }} Kg
                             </p>
-                            <div class="status-badge bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
+                            <div
+                                class="status-badge bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
                                 Perlu Perhatian
                             </div>
                         </div>
@@ -200,7 +213,8 @@ use Illuminate\Support\Str;
     @if ($startDate && $endDate)
     <div class="date-footer text-center mt-6 px-4">
         <p class="text-sm text-gray-600 bg-white inline-block px-4 py-2 rounded-lg shadow-sm">
-            Periode Data: {{ \Carbon\Carbon::parse($startDate)->format('d M Y') }} - {{ \Carbon\Carbon::parse($endDate)->format('d M Y') }}
+            Periode Data: {{ \Carbon\Carbon::parse($startDate)->format('d M Y') }} -
+            {{ \Carbon\Carbon::parse($endDate)->format('d M Y') }}
         </p>
     </div>
     @endif
@@ -212,15 +226,18 @@ use Illuminate\Support\Str;
             <div class="title flex flex-col items-center text-center mb-6">
                 <div class="flex items-center mb-2">
                     <div class="bg-blue-100 p-2 rounded-lg mr-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
                     </div>
                     <p class="text-lg lg:text-xl font-bold text-gray-800">Total Panen per Kelurahan</p>
                 </div>
                 <p class="date-range text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
                     @if ($startDate && $endDate)
-                    Periode: {{ \Carbon\Carbon::parse($startDate)->format('d M Y') }} - {{ \Carbon\Carbon::parse($endDate)->format('d M Y') }}
+                    Periode: {{ \Carbon\Carbon::parse($startDate)->format('d M Y') }} -
+                    {{ \Carbon\Carbon::parse($endDate)->format('d M Y') }}
                     @else
                     <span class="text-gray-400 italic">Pilih periode tanggal</span>
                     @endif
@@ -236,15 +253,18 @@ use Illuminate\Support\Str;
             <div class="title flex flex-col items-center text-center mb-6">
                 <div class="flex items-center mb-2">
                     <div class="bg-amber-100 p-2 rounded-lg mr-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
                     <p class="text-lg lg:text-xl font-bold text-gray-800">Total Belum Panen per Kelurahan</p>
                 </div>
                 <p class="date-range text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
                     @if ($startDate && $endDate)
-                    Periode: {{ \Carbon\Carbon::parse($startDate)->format('d M Y') }} - {{ \Carbon\Carbon::parse($endDate)->format('d M Y') }}
+                    Periode: {{ \Carbon\Carbon::parse($startDate)->format('d M Y') }} -
+                    {{ \Carbon\Carbon::parse($endDate)->format('d M Y') }}
                     @else
                     <span class="text-gray-400 italic">Pilih periode tanggal</span>
                     @endif
@@ -263,8 +283,10 @@ use Illuminate\Support\Str;
         <div class="total-panen-kelurahan flex flex-col bg-white rounded-xl shadow-lg py-6 px-4 lg:h-auto">
             <div class="title flex justify-center items-center px-4 mb-5">
                 <div class="bg-red-100 p-2 rounded-lg mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
                 <p class="text-lg lg:text-xl font-bold text-gray-800">Terlambat Panen</p>
@@ -274,26 +296,36 @@ use Illuminate\Support\Str;
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-red-600">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Kelurahan</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jumlah</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tgl Prakiraan</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Tgl Panen</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    No</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Kelurahan</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Jumlah</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Tgl Prakiraan</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Tgl Panen</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @forelse ($dataTelatPanenPerKelurahan as $tpk)
                             <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">{{ $tpk['kelurahan'] }}</td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ $loop->iteration }}
+                                </td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {{ $tpk['kelurahan'] }}</td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                         {{ $tpk['total'] }} kg
                                     </span>
                                 </td>
-                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ optional($tpk['data']->first())->waktu_prakiraan_panen }}</td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                    {{ optional($tpk['data']->first())->waktu_prakiraan_panen }}</td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                         {{ optional($tpk['data']->first())->waktu_panen }}
                                     </span>
                                 </td>
@@ -302,10 +334,13 @@ use Illuminate\Support\Str;
                             <tr>
                                 <td colspan="5" class="px-4 py-8 text-center">
                                     <div class="flex flex-col items-center justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300 mb-2"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
-                                        <p class="text-base font-medium text-gray-500">Tidak ada kelurahan yang terlambat panen</p>
+                                        <p class="text-base font-medium text-gray-500">Tidak ada kelurahan yang
+                                            terlambat panen</p>
                                     </div>
                                 </td>
                             </tr>
@@ -320,8 +355,10 @@ use Illuminate\Support\Str;
         <div class="total-belum-panen-kelurahan flex flex-col bg-white rounded-xl shadow-lg py-6 px-4 lg:h-auto">
             <div class="title flex justify-center items-center px-4 mb-5">
                 <div class="bg-green-100 p-2 rounded-lg mr-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                 </div>
                 <p class="text-lg lg:text-xl text-center font-bold text-gray-800">Akan Panen 7 Hari Kedepan</p>
@@ -331,24 +368,32 @@ use Illuminate\Support\Str;
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-green-600">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Kelurahan</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jumlah</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Waktu Prakiraan</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    No</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Kelurahan</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Jumlah</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                                    Waktu Prakiraan</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @forelse ($dataPanen7HariKedepan as $data)
                             <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">{{ $data['kelurahan'] }}</td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ $loop->iteration }}
+                                </td>
+                                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {{ $data['kelurahan'] }}</td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                         {{ $data['total'] }} kg
                                     </span>
                                 </td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                         {{ optional($data['data']->first())->waktu_prakiraan_panen }}
                                     </span>
                                 </td>
@@ -357,10 +402,13 @@ use Illuminate\Support\Str;
                             <tr>
                                 <td colspan="4" class="px-4 py-8 text-center">
                                     <div class="flex flex-col items-center justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300 mb-2"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                         </svg>
-                                        <p class="text-base font-medium text-gray-500">Tidak ada panen dalam 7 hari kedepan</p>
+                                        <p class="text-base font-medium text-gray-500">Tidak ada panen dalam 7 hari
+                                            kedepan</p>
                                     </div>
                                 </td>
                             </tr>
@@ -374,26 +422,53 @@ use Illuminate\Support\Str;
 </section>
 <!-- Modal -->
 <div id="kelurahanModal" class="hidden fixed inset-0 bg-black/40 flex justify-center items-center pb-14">
-    <div class="bg-white rounded-xl shadow-lg w-1/2 p-6 max-h-[720px] overflow-auto">
-       <div class="flex justify-between items-center mb-4">
-            <h2 id="modalTitle" class="text-xl font-semibold"></h2>
-            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
-        </div>
-        <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-green-600">
-                <tr class="border-b">
-                    <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama Kelompok</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jumlah Panen</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Waktu Panen</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi</th>
-                </tr>
-            </thead>
-            <tbody id="kelurahanTableBody" class="bg-white divide-y divide-gray-200"></tbody>
-        </table>
+    <div class="bg-white rounded-xl shadow-lg w-3/4 md:w-1/2 p-6 max-h-[720px] flex flex-col ">
+            <div class=" md:w-full  flex justify-between items-center mb-4 ">
+                <h2 id="modalTitle" class="text-sm font-semibold"></h2>
 
-        <div class="flex justify-end mt-4">
-            <button onclick="closeModal()" class="bg-gray-600 text-white px-4 py-2 rounded">Tutup</button>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
+            </div>
+        <div class="flex-1 overflow-auto ">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-green-600">
+                    <tr class="border-b">
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama
+                            Kelompok</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jumlah Panen
+                        </th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Waktu Panen
+                        </th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="kelurahanTableBody" class="bg-white divide-y divide-gray-200"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="kelurahanModalBelumPanen" class="hidden fixed inset-0 bg-black/40 flex justify-center items-center pb-14">
+    <div class="bg-white rounded-xl shadow-lg w-3/4 md:w-1/2 p-6 max-h-[720px] flex flex-col ">
+            <div class=" md:w-full  flex justify-between items-center mb-4 ">
+                <h2 id="modalTitle2" class="text-sm font-semibold"></h2>
+                <button onclick="closeModal2()" class="text-gray-500 hover:text-gray-700">✕</button>
+            </div>
+            <p id="subtitle" class="text-sm md:text-md font-semibold mb-2"></p>
+        <div class="flex-1 overflow-auto ">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-green-600">
+                    <tr class="border-b">
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Kelompok
+                            Kelompok</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Prakiraan Waktu Panen
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody id="kelurahanBelumPanenTableBody" class="bg-white divide-y divide-gray-200"></tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -401,25 +476,60 @@ use Illuminate\Support\Str;
 
 
 
-   <script>
-        const dataPanenPerKelurahan = @json($dataPanenPerKelurahan);
+<script>
+    const dataPanenPerKelurahan = @json($dataPanenPerKelurahan);
+    const dataBelumPanenPerKelurahan = @json($dataBelumPanenPerKelurahan);
+    const waktuPanenValues = dataBelumPanenPerKelurahan.map(item => item.waktuPanen);
+const rawCommodity = document.getElementById('commodity').value;
+const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); // baru kapital tiap kata
+     function showKelurahanBelumPanenModal(kelurahan, total, waktuPanen) {
+        document.getElementById('modalTitle2').textContent = 'Detail Panen Kel. ' + kelurahan;
+        document.getElementById('subtitle').innerHTML =
+            'Perkiraan lama masa tanam ' + commodity +  ' <span class="font-bold text-green-500">' + waktuPanenValues + ' hari</span>';
+        const kelData = dataBelumPanenPerKelurahan.find(item => item.kelurahan === kelurahan);
+        const tbody = document.getElementById('kelurahanBelumPanenTableBody');
+        tbody.innerHTML = '';
 
-        function showKelurahanModal(kelurahan, total) {
-            document.getElementById('modalTitle').textContent = 'Detail Panen di Kelurahan ' + kelurahan;
-            const kelData = dataPanenPerKelurahan.find(item => item.kelurahan === kelurahan);
-            const tbody = document.getElementById('kelurahanTableBody');
-            tbody.innerHTML = '';
+        if (kelData && kelData.data.length > 0) {
 
-            if (kelData && kelData.data.length > 0) {
-
-                kelData.data.forEach((item, index) => {
-                    const row = `
+            kelData.data.forEach((item, index) => {
+                const row = `
                         <tr class="hover:bg-gray-50 transition">
-                            <td class="px-4 py-3 text-sm">${index+1}</td>
-                            <td class="px-4 py-3 text-sm font-medium">${item.nama_kelompok}</td>
-                            <td class="px-4 py-3 text-sm">${item.jumlah_panen ?? '-'} kg</td>
-                            <td class="px-4 py-3 text-sm">${item.waktu_panen ?? '-'}</td>
-                            <td class="px-4 py-3 text-sm text-blue-600 cursor-pointer" onclick="toggleDetail(${index})">
+                            <td class="px-4 py-3 text-xs">${index+1}</td>
+                            <td class="px-4 py-3 text-xs font-medium">${item.nama_kelompok}</td>
+                            <td class="px-4 py-3 text-xs">${item.waktu_prakiraan_panen ?? '-'} kg</td>
+
+                        </tr>
+
+                    `;
+                tbody.innerHTML += row;
+            });
+        } else {
+            tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="text-center text-gray-600 py-3">Tidak ada data bibit</td>
+                    </tr>
+                `;
+        }
+
+        document.getElementById('kelurahanModalBelumPanen').classList.remove('hidden');
+    }
+    function showKelurahanModal(kelurahan, total) {
+        document.getElementById('modalTitle').textContent = 'Detail Panen Kel. ' + kelurahan;
+        const kelData = dataPanenPerKelurahan.find(item => item.kelurahan === kelurahan);
+        const tbody = document.getElementById('kelurahanTableBody');
+        tbody.innerHTML = '';
+
+        if (kelData && kelData.data.length > 0) {
+
+            kelData.data.forEach((item, index) => {
+                const row = `
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-4 py-3 text-xs">${index+1}</td>
+                            <td class="px-4 py-3 text-xs font-medium">${item.nama_kelompok}</td>
+                            <td class="px-4 py-3 text-xs">${item.jumlah_panen ?? '-'} kg</td>
+                            <td class="px-4 py-3 text-xs">${item.waktu_panen ?? '-'}</td>
+                            <td class="px-4 py-3 text-xs text-blue-600 cursor-pointer" onclick="toggleDetail(${index})">
                                 <span id="icon-${index}">⯈</span> Detail
                             </td>
                         </tr>
@@ -525,36 +635,39 @@ use Illuminate\Support\Str;
 
 
                     `;
-                    tbody.innerHTML += row;
-                });
-            } else {
-                tbody.innerHTML = `
+                tbody.innerHTML += row;
+            });
+        } else {
+            tbody.innerHTML = `
                     <tr>
                         <td colspan="5" class="text-center text-gray-600 py-3">Tidak ada data panen</td>
                     </tr>
                 `;
-            }
-
-            document.getElementById('kelurahanModal').classList.remove('hidden');
         }
 
-        function toggleDetail(index) {
-            const detailRow = document.getElementById(`detail-${index}-1`);
-            const detailRow2 = document.getElementById(`detail-${index}-2`);
-             const detailRow3 = document.getElementById(`detail-${index}-3`);
+        document.getElementById('kelurahanModal').classList.remove('hidden');
+    }
 
-            const icon = document.getElementById(`icon-${index}`);
-            detailRow.classList.toggle('hidden');
-            detailRow2.classList.toggle('hidden');
-            detailRow3.classList.toggle('hidden');
+    function toggleDetail(index) {
+        const detailRow = document.getElementById(`detail-${index}-1`);
+        const detailRow2 = document.getElementById(`detail-${index}-2`);
+        const detailRow3 = document.getElementById(`detail-${index}-3`);
+
+        const icon = document.getElementById(`icon-${index}`);
+        detailRow.classList.toggle('hidden');
+        detailRow2.classList.toggle('hidden');
+        detailRow3.classList.toggle('hidden');
 
 
-            icon.textContent = detailRow.classList.contains('hidden') ? '⯈' : '⯆';
-        }
+        icon.textContent = detailRow.classList.contains('hidden') ? '⯈' : '⯆';
+    }
 
-        function closeModal() {
-            document.getElementById('kelurahanModal').classList.add('hidden');
-        }
+    function closeModal() {
+        document.getElementById('kelurahanModal').classList.add('hidden');
+    }
+     function closeModal2() {
+        document.getElementById('kelurahanModal').classList.add('hidden');
+    }
 
     // Initialize Total Harvest Chart
     const ctx = document.getElementById('panenKelurahanLineChart').getContext('2d');
@@ -626,7 +739,7 @@ use Illuminate\Support\Str;
                         font: {
                             size: 11
                         },
-                        callback: function(value) {
+                        callback: function (value) {
                             return value.toLocaleString('id-ID') + ' kg';
                         }
                     }
@@ -698,7 +811,8 @@ use Illuminate\Support\Str;
         type: 'line',
         data: {
             labels: labels1,
-            datasets: [{
+            datasets: [
+                {
                 label: 'Total Belum Panen (kg)',
                 data: dataValues1,
                 fill: true,
@@ -720,7 +834,18 @@ use Illuminate\Support\Str;
                 intersect: false,
                 mode: 'index'
             },
+            onClick: function (evt, elements) {
+                if (elements.length > 0) {
+                    const chart = elements[0].element.$context.chart;
+                    const index = elements[0].index;
 
+                    const kelurahan = chart.data.labels[index];
+                    const total = chart.data.datasets[0].data[index];
+
+                    // panggil fungsi buat buka modal
+                    showKelurahanBelumPanenModal(kelurahan, total);
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true,
@@ -742,7 +867,7 @@ use Illuminate\Support\Str;
                         font: {
                             size: 11
                         },
-                        callback: function(value) {
+                        callback: function (value) {
                             return value.toLocaleString('id-ID') + ' kg';
                         }
                     }
@@ -798,5 +923,6 @@ use Illuminate\Support\Str;
             }
         }
     });
+
 </script>
 @endsection
