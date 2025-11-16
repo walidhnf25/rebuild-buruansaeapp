@@ -25,3 +25,4 @@ Route::prefix('/')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
+Route::view('/map', 'home.maps');

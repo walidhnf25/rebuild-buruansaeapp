@@ -32,6 +32,11 @@
               <span class="text-footer">Berita</span>
           </a>
       </div>
+      <div class="col pt-2">
+          <a href="map" class="footer {{ Request::is('map') ? 'active-menu':'' }}">
+              <i class="fa-{{ Request::is('map') ? 'solid':'light' }} fa-map icon-footer"></i>
+              <span class="text-footer">Peta</span>
+          </a>
+      </div>
     </div>
   </footer>
-  

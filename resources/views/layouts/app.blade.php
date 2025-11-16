@@ -39,24 +39,7 @@
     <script src="https://unpkg.com/leaflet.fullscreen/Control.FullScreen.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        #map {
-            width: 100%;
-            height: 600px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            margin-bottom: 40px;
-        }
-
-        .leaflet-popup-content-wrapper {
-            border-radius: 10px;
-        }
-
-        .leaflet-popup-content {
-            font-size: 14px;
-        }
-
-    </style>
+    @stack('styles')
 </head>
 
 <body>
@@ -87,7 +70,7 @@
     <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+    @stack('scripts')
 </body>
 
 </html>

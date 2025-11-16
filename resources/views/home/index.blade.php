@@ -4,8 +4,8 @@
 @section('content')
 @include('layouts.header')
 <div style="max-width: 2048px; margin:auto;">
-  <div class="banner banner-pad-1 bg_img">
-    <div class="container">
+  <div class="banner banner-pad-1 bg_img md:h-screen content-center">
+    <div class="container  ">
       <div class="banner-content">
           <div class="banner-title">BURUAN SAE</div>
           <div class="banner-desc">Urban Farming yang Terintegrasi</div>
@@ -14,14 +14,14 @@
   </div>
 </div>
 
-<section id="about" class="agricul-farm-section padding-tb bg_img_1 bg_img ">
+<section id="about" class="agricul-farm-section padding-tb bg_img_1 bg_img px-2 ">
   <div class="container">
       <div class="section-wrapper">
               <div class="col-lg-12 col-12 wow fadeInUp" data-wow-delay="0.4s">
                   <div class="farm-right">
-                      <div class="section-header text-center">
-                          <h2 class="title-about">What is<br><span style="color: #2f589b;">BURUAN SAE</span> <span style="color: #ce254a;">?</span></h2>
-                          <p>Buruan Sae is an integrated urban farming program promoted by the Food and Agriculture Security Department (DKPP) of Bandung City, which is aimed at overcoming the inequality of food problems in Bandung City. through utilizing the yard or existing land through gardening to meet the family's own food needs.</p>
+                      <div class="section-header text-center flex gap-4 flex-col">
+                          <p class="title-about text-xl md:text-6xl font-bold ">What is<br><span style="color: #2f589b;">BURUAN SAE</span> <span style="color: #ce254a;">?</span></p>
+                          <p class="text-sm md:text-2xl">Buruan Sae is an integrated urban farming program promoted by the Food and Agriculture Security Department (DKPP) of Bandung City, which is aimed at overcoming the inequality of food problems in Bandung City. through utilizing the yard or existing land through gardening to meet the family's own food needs.</p>
                       </div>
                   </div>
               </div>
@@ -32,9 +32,9 @@
 
 <section class="feature-section padding-tb">
   <div class="shape-feature d-none d-xl-block"></div>
-  <div class="container">
+  <div class="container py-2">
     <div class="section-header wow fadeInUp" data-wow-delay="0.3s">
-      <h2>Buruan Sae's Sectors</h2>
+      <p class="text-xl md:text-4xl font-bold">Buruan Sae's Sectors</p>
     </div>
     <div class="section-wrapper">
       <div class="row justify-content-center">
@@ -43,11 +43,11 @@
         <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.4s">
           <div class="feature-item">
             <div class="feature-inner">
-              <div class="feature-thumb">
+              <div class="feature-thumb  flex justify-center">
                 <img src="assets/images/vegetable.png" alt="Vegetable" width="120">
               </div>
               <div class="feature-content">
-                <a href="/vegetable?sector=sayur"><h5>Vegetable</h5></a>
+                <a href="/vegetable?sector=sayur"><p class="text-md md:text-2xl font-bold">Vegetable</p></a>
               </div>
             </div>
           </div>
@@ -57,11 +57,11 @@
         <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
           <div class="feature-item">
             <div class="feature-inner">
-              <div class="feature-thumb">
+              <div class="feature-thumb flex justify-center">
                 <img src="assets/images/herbplant.png" alt="Tanaman Obat" width="100">
               </div>
               <div class="feature-content">
-                <a href="/medicalplant?sector=tanaman_obat"><h5>Tanaman Obat</h5></a>
+                <a href="/medicalplant?sector=tanaman_obat"><p class="text-md md:text-2xl font-bold">Tanaman Obat</p></a>
               </div>
             </div>
           </div>
@@ -71,11 +71,11 @@
         <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.5s">
           <div class="feature-item">
             <div class="feature-inner">
-              <div class="feature-thumb">
+              <div class="feature-thumb flex justify-center">
                 <img src="assets/images/fruit.png" alt="Fruit" width="115">
               </div>
               <div class="feature-content">
-                <a href="/fruit?sector=buah"><h5>Fruit</h5></a>
+                <a href="/fruit?sector=buah"><p class="text-md md:text-2xl font-bold">Fruit</p></a>
               </div>
             </div>
           </div>
@@ -85,11 +85,11 @@
         <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
           <div class="feature-item">
             <div class="feature-inner">
-              <div class="feature-thumb">
+              <div class="feature-thumb flex justify-center">
                 <img src="assets/images/animal.png" alt="Ternak" width="125">
               </div>
               <div class="feature-content">
-                <a href="/livestock?sector=ternak"><h5>Ternak</h5></a>
+                <a href="/livestock?sector=ternak"><p class="text-md md:text-2xl font-bold">Ternak</p></a>
               </div>
             </div>
           </div>
@@ -99,11 +99,11 @@
         <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.6s">
           <div class="feature-item">
             <div class="feature-inner">
-              <div class="feature-thumb">
+              <div class="feature-thumb flex justify-center">
                 <img src="assets/images/fish.png" alt="Ikan" width="120">
               </div>
               <div class="feature-content">
-                <a href="/fish?sector=ikan"><h5>Ikan</h5></a>
+                <a href="/fish?sector=ikan"><p class="text-md md:text-2xl font-bold">Ikan</p></a>
               </div>
             </div>
           </div>
@@ -113,11 +113,11 @@
         <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
           <div class="feature-item">
             <div class="feature-inner">
-              <div class="feature-thumb">
+              <div class="feature-thumb flex justify-center">
                 <img src="assets/images/result.png" alt="Olahan Hasil" width="130">
               </div>
               <div class="feature-content">
-                <a href="#"><h5>Olahan Hasil</h5></a>
+                <a href="#"><p class="text-md md:text-2xl font-bold">Olahan Hasil</p></a>
               </div>
             </div>
           </div>
@@ -127,11 +127,11 @@
         <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
           <div class="feature-item">
             <div class="feature-inner">
-              <div class="feature-thumb">
+              <div class="feature-thumb flex justify-center">
                 <img src="assets/images/compost.png" alt="Pengolahan Sampah" width="130">
               </div>
               <div class="feature-content">
-                <a href="#"><h5>Pengolahan Sampah</h5></a>
+                <a href="#"><p class="text-md md:text-2xl font-bold">Pengolahan Sampah</p></a>
               </div>
             </div>
           </div>
@@ -141,11 +141,11 @@
         <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
           <div class="feature-item">
             <div class="feature-inner">
-              <div class="feature-thumb">
+              <div class="feature-thumb flex justify-center">
                 <img src="assets/images/nursery.png" alt="Pembibitan" width="120">
               </div>
               <div class="feature-content">
-                <a href="#"><h5>Pembibitan</h5></a>
+                <a href="#"><p class="text-md md:text-2xl font-bold">Pembibitan</p></a>
               </div>
             </div>
           </div>
@@ -156,18 +156,18 @@
   </div>
 </section>
 
-<section class="about-us bg_img_1 bg_img padding-tb">
+<section class="about-us bg_img_1 bg_img padding-tb mt-4 ">
   <div class="shape-about d-none d-xl-block"></div>
-  <div class="container">
+  <div class="container flex justify-center items-center px-2 py-4">
     <div class="row">
       <div class="col-lg-12 col-12">
 
         <!-- Section Header -->
-        <div class="section-header text-start wow fadeInUp" data-wow-delay="0.3s">
-          <h2>Tagline Kami</h2>
+        <div class="section-header text-start wow fadeInUp flex flex-col gap-3" data-wow-delay="0.3s">
+          <h2 class="text-xl md:text-6xl font-bold">Tagline Kami</h2>
           <p>
-            Melalui program ini Pemkot Bandung berharap bahwa masyarakat dapat belajar untuk 
-            memproduksi bahan pangannya sendiri, sehingga makanan yang dikonsumsi dapat lebih 
+            Melalui program ini Pemkot Bandung berharap bahwa masyarakat dapat belajar untuk
+            memproduksi bahan pangannya sendiri, sehingga makanan yang dikonsumsi dapat lebih
             sehat, alami, serta ekonomis.
           </p>
         </div>
@@ -181,10 +181,10 @@
               <div class="about-thumb">
                 <img src="assets/images/tagline/1.png" alt="Sehat">
               </div>
-              <div class="about-content">
-                <a href="#"><h5>SEHAT</h5></a>
+              <div class="about-content flex flex-col gap-1">
+                <a href="#"><h5 class="text-md md:text-2xl font-bold">SEHAT</h5></a>
                 <p>
-                  Bahan pangan tersebut dikelola sendiri langsung oleh masyarakat sehingga terjaga 
+                  Bahan pangan tersebut dikelola sendiri langsung oleh masyarakat sehingga terjaga
                   prosesnya dan tidak banyak menggunakan pestisida kimia.
                 </p>
               </div>
@@ -197,8 +197,8 @@
               <div class="about-thumb">
                 <img src="assets/images/tagline/2.png" alt="Alami">
               </div>
-              <div class="about-content">
-                <a href="#"><h5>ALAMI</h5></a>
+              <div class="about-content flex flex-col gap-1">
+                <a href="#"><h5 class="text-md md:text-2xl font-bold">ALAMI</h5></a>
                 <p>
                   Produk langsung dari alam dan diolah dengan media pupuk serta pestisida alami.
                 </p>
@@ -210,12 +210,12 @@
           <div class="about-item wow fadeInUp" data-wow-delay="0.6s">
             <div class="about-inner">
               <div class="about-thumb">
-                <img src="assets/images/tagline/3.png" alt="Ekonomis">
+                <img src="assets/images/tagline/3.png" alt="Ekonomis" class="w-40 h-18">
               </div>
-              <div class="about-content">
-                <a href="#"><h5>EKONOMIS</h5></a>
+              <div class="about-content flex flex-col gap-1">
+                <a href="#"><h5 class="text-md md:text-2xl font-bold">EKONOMIS</h5></a>
                 <p>
-                  Mampu menghasilkan bahan pangan yang bisa dikonsumsi sendiri atau dijual 
+                  Mampu menghasilkan bahan pangan yang bisa dikonsumsi sendiri atau dijual
                   dalam jumlah mikro.
                 </p>
               </div>
@@ -266,7 +266,7 @@
               </div>
               <div class="footer-desc">
                 <p>
-                  Buruan Sae adalah sebuah program urban farming terintegrasi yang 
+                  Buruan Sae adalah sebuah program urban farming terintegrasi yang
                   digalakan oleh Dinas Ketahanan Pangan dan Pertanian (DKPP) Kota Bandung.
                 </p>
               </div>
