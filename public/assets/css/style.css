@@ -16,12 +16,12 @@ Tags: agriculture, agriculture farmer, dairy, dairy farm, eco, eco farm, farm, f
 
 01. Normalize CSS
 02. Global CSS
-03. Header 
+03. Header
 	* Style-1
 	* Style-2
 	* Style-3
 	* Mobile Menu
-04. Banner 
+04. Banner
 	* Style-1
 	* Style-2
 	* Style-3
@@ -139,11 +139,11 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:focus, a:active, a:visited {
+/* a:hover, a:focus, a:active, a:visited {
   color: #181818;
   text-decoration: none;
   outline: none;
-}
+} */
 
 img {
   height: auto;

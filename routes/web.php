@@ -25,4 +25,7 @@ Route::prefix('/')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/news', [HomeController::class, 'news'])->name('blog.news');
+Route::get('/news/{slug}', [HomeController::class, 'blog'])->name('blog.show');
+
 Route::view('/map', 'home.maps');
