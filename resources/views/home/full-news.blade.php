@@ -65,82 +65,75 @@
 </section>
 
 <!-- Footer Section -->
-<div class="footer-section bg-gray-800 text-white py-12">
-    <div class="container mx-auto px-4">
-        <div class="footer-top">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="footer-item">
-                    <div class="footer-inner">
-                        <div class="footer-logo mb-6">
-                            <img src="{{ asset('assets/images/logo.png') }}" alt="Buruan Sae Logo" width="200">
-                        </div>
-                        <div class="footer-desc">
-                            <p class="text-gray-300 leading-relaxed">
-                                Buruan Sae adalah sebuah program urban farming terintegrasi yang
-                                digalakan oleh Dinas Ketahanan Pangan dan Pertanian (DKPP) Kota Bandung.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-item">
-                    <div class="footer-inner">
-                        <div class="footer-title mb-6">
-                            <h5 class="text-xl font-semibold">Keep In Touch</h5>
-                        </div>
-                        <div class="footer-body">
-                            <ul class="space-y-4">
-                                <li class="flex items-start">
-                                    <div class="icon mt-1 mr-4 text-[#DC3545]">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="details">
-                                        <p class="text-gray-300">Jl. Arjuna No.45, Bandung, Jawa Barat, Indonesia</p>
-                                    </div>
-                                </li>
-                                <li class="flex items-start">
-                                    <div class="icon mt-1 mr-4 text-[#DC3545]">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="details">
-                                        <p class="text-gray-300">022-6015102</p>
-                                    </div>
-                                </li>
-                                <li class="flex items-start">
-                                    <div class="icon mt-1 mr-4 text-[#DC3545]">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="details">
-                                        <p class="text-gray-300">dispangtan@bandung.go.id</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+<div class="footer-section padding-tb">
+  <div class="container">
+    <div class="footer-top">
+      <div class="row">
+        <div class="col-xl-12 col-md-6 col-12">
+          <div class="footer-item">
+            <div class="footer-inner">
+              <div class="footer-logo">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="Buruan Sae Logo" width="200">
+              </div>
+              <div class="footer-desc">
+                <p>
+                  Buruan Sae adalah sebuah program urban farming terintegrasi yang
+                  digalakan oleh Dinas Ketahanan Pangan dan Pertanian (DKPP) Kota Bandung.
+                </p>
+              </div>
             </div>
+          </div>
         </div>
-        <div class="footer-bottom border-t border-gray-700 mt-8 pt-8 text-center">
-            <p class="text-gray-400">
-                Copyright &copy; {{ date('Y') }} <a href="#" class="text-[#DC3545] hover:text-red-400"><span>BURUAN SAE</span></a><br>All Rights Reserved.
-            </p>
+
+        <div class="col-xl-12 col-md-6 col-12">
+          <div class="footer-item footer-addtess">
+            <div class="footer-inner">
+              <div class="footer-title">
+                <h5>Keep In Touch</h5>
+              </div>
+              <div class="footer-body">
+                <ul class="agri-ul">
+                  <li>
+                    <div class="icon">
+                      <i class="icofont-google-map"></i>
+                    </div>
+                    <div class="details">
+                      <p>Jl. Arjuna No.45, Bandung, Jawa Barat, Indonesia</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <i class="icofont-phone"></i>
+                    </div>
+                    <div class="details">
+                      <p>022-6015102</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="icon">
+                      <i class="icofont-envelope"></i>
+                    </div>
+                    <div class="details">
+                      <p>dispangtan@bandung.go.id</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; {{ date('Y') }}<a href="#" target="_blank"><span>BURUAN SAE</span></a><br>All Rights Reserved.
+    </div>
+  </div>
+</div>
+  <a href="#" class="scrollToTop"><i class="icofont-swoosh-up"></i><span class="pluse_1"></span><span class="pluse_2"></span></a>
 </div>
 
+
 <!-- Scroll to Top Button -->
-<a href="#" class="scrollToTop fixed bottom-8 right-8 bg-[#DC3545] text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition duration-300">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-    </svg>
-</a>
 
 <style>
     .line-clamp-2 {

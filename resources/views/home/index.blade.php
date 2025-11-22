@@ -158,7 +158,7 @@
 
 <section class="about-us bg_img_1 bg_img padding-tb mt-4 ">
   <div class="shape-about d-none d-xl-block"></div>
-  <div class="container flex justify-center items-center px-2 py-4">
+  <div class="container flex justify-center items-center px-10 py-4">
     <div class="row">
       <div class="col-lg-12 col-12">
 
