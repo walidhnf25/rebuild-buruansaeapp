@@ -47,7 +47,7 @@
                 <img src="assets/images/vegetable.png" alt="Vegetable" width="120">
               </div>
               <div class="feature-content">
-                <a href="/vegetable?sector=sayur"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Vegetable</p></a>
+                <a href="/vegetable?sector=sayur"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Sayur-sayuran</p></a>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@
                 <img src="assets/images/fruit.png" alt="Fruit" width="115">
               </div>
               <div class="feature-content">
-                <a href="/fruit?sector=buah"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Fruit</p></a>
+                <a href="/fruit?sector=buah"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Buah</p></a>
               </div>
             </div>
           </div>

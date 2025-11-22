@@ -1,14 +1,22 @@
 @extends('layouts.app')
 
-@section('page_name', $page)
+@section('page_name', __('sector.'.$sector) )
 @section('content')
 @php
 use Illuminate\Support\Str;
 @endphp
-<div class="navbar w-full h-auto px-4 py-2 bg-[#DC3545] flex justify-between">
-    <img src="{{ asset('assets/images/logo.png') }}" alt="logo_dkpp" class="md:size-1/12 size-1/2">
-    <p class="text-2xl text-white font-bold text-center">{{$page}}</p>
+<div class="navbar w-full h-auto px-4 py-2 bg-[#DC3545] md:relative justify-between flex items-center">
+    <!-- Logo kiri pojok -->
+    <img src="{{ asset('assets/images/logo.png') }}"
+         alt="logo_dkpp"
+         class="md:size-1/12 size-1/2">
+
+    <!-- Teks benar-benar di tengah -->
+    <p class="text-2xl text-white font-bold text-center md:absolute md:left-1/2 md:-translate-x-1/2">
+        {{ __('sector.'.$sector) }}
+    </p>
 </div>
+
 <section class="filter w-full h-auto bg-[#F8F8F8] ">
     <form action="" method="GET"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center flex items-end  h-auto p-4 lg:px-10 lg:py-7">
