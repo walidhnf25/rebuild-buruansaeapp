@@ -4,7 +4,7 @@
 <style>
     #map {
         width: 100%;
-        height: 86vh;
+        height: 84vh;
 
     }
 
