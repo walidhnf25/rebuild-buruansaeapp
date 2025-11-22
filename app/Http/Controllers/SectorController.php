@@ -17,7 +17,6 @@ class SectorController extends Controller
 {
     public function index(Request $request)
     {
-        $page = strtoupper($request->path());
         $sector = $request->query('sector');
         $selectedCommodity = $request->input('commodity');
         $selectedDistrict = $request->input('district');
@@ -362,7 +361,7 @@ class SectorController extends Controller
             'commodity', 'districts', 'selectedCommodity',
             'totalHarvest', 'totalHarvestPerKec', 'sector', 'belumPaneninSeed',
             'dataPanenPerKelurahan', 'terlambatPanen', 'dataTotal', 'dataBelumPanenPerKelurahan',
-            'dataTelatPanenPerKelurahan', 'startDate', 'endDate', 'dataPanen7HariKedepan', 'belumPaneninKg', 'gambar', 'page'
+            'dataTelatPanenPerKelurahan', 'startDate', 'endDate', 'dataPanen7HariKedepan', 'belumPaneninKg', 'gambar'
         ));
     }
 }

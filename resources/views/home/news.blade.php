@@ -2,9 +2,8 @@
 @section('page_name', 'Berita')
 @section('content')
 <section class="py-4">
-
-    <div class="bg-[#F8F8F8] h-auto w-full py-6 px-10 flex flex-col gap-12 mb-20">
-        <div class="mb-6">
+    <div class="bg-[#F8F8F8] h-auto w-full py-6 px-10 flex flex-col gap-12 ">
+        <div class="">
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3">
                     <li class="inline-flex items-center">
@@ -42,12 +41,12 @@
             <p class="text-md md:text-2xl text-white">BLOG</p>
             <p class="text-lg md:text-6xl text-white font-semibold">Article & News</p>
         </div>
-        <div class="article-section w-full flex flex-col justify-center text-center rounded-t-lg gap-2">
+        <div class="article-section w-full flex flex-col justify-center text-center rounded-t-lg gap-2 ">
             <div class="heading flex flex-row justify-between">
                 <p class="text-xl md:text-3xl text-[#DC3545] font-semibold">Latest Article</p>
 
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4  h-auto mb-20 ">
                 @foreach ($articles as $item)
                 <div class="news flex flex-col  gap-3 rounded-lg bg-white shadow-lg ">
                     <div class="cover rounded-md">

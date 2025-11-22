@@ -47,7 +47,7 @@
                 <img src="assets/images/vegetable.png" alt="Vegetable" width="120">
               </div>
               <div class="feature-content">
-                <a href="/vegetable?sector=sayur"><p class="text-md md:text-2xl font-bold">Vegetable</p></a>
+                <a href="/vegetable?sector=sayur"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Sayur-sayuran</p></a>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@
                 <img src="assets/images/herbplant.png" alt="Tanaman Obat" width="100">
               </div>
               <div class="feature-content">
-                <a href="/medicalplant?sector=tanaman_obat"><p class="text-md md:text-2xl font-bold">Tanaman Obat</p></a>
+                <a href="/medicalplant?sector=tanaman_obat"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Tanaman Obat</p></a>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@
                 <img src="assets/images/fruit.png" alt="Fruit" width="115">
               </div>
               <div class="feature-content">
-                <a href="/fruit?sector=buah"><p class="text-md md:text-2xl font-bold">Fruit</p></a>
+                <a href="/fruit?sector=buah"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Buah</p></a>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
                 <img src="assets/images/animal.png" alt="Ternak" width="125">
               </div>
               <div class="feature-content">
-                <a href="/livestock?sector=ternak"><p class="text-md md:text-2xl font-bold">Ternak</p></a>
+                <a href="/livestock?sector=ternak"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Ternak</p></a>
               </div>
             </div>
           </div>
@@ -103,7 +103,7 @@
                 <img src="assets/images/fish.png" alt="Ikan" width="120">
               </div>
               <div class="feature-content">
-                <a href="/fish?sector=ikan"><p class="text-md md:text-2xl font-bold">Ikan</p></a>
+                <a href="/fish?sector=ikan"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Ikan</p></a>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@
                 <img src="assets/images/result.png" alt="Olahan Hasil" width="130">
               </div>
               <div class="feature-content">
-                <a href="#"><p class="text-md md:text-2xl font-bold">Olahan Hasil</p></a>
+                <a href="#"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Olahan Hasil</p></a>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@
                 <img src="assets/images/compost.png" alt="Pengolahan Sampah" width="130">
               </div>
               <div class="feature-content">
-                <a href="#"><p class="text-md md:text-2xl font-bold">Pengolahan Sampah</p></a>
+                <a href="#"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pengolahan Sampah</p></a>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@
                 <img src="assets/images/nursery.png" alt="Pembibitan" width="120">
               </div>
               <div class="feature-content">
-                <a href="#"><p class="text-md md:text-2xl font-bold">Pembibitan</p></a>
+                <a href="#"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pembibitan</p></a>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@
 
 <section class="about-us bg_img_1 bg_img padding-tb mt-4 ">
   <div class="shape-about d-none d-xl-block"></div>
-  <div class="container flex justify-center items-center px-2 py-4">
+  <div class="container flex justify-center items-center px-10 py-4">
     <div class="row">
       <div class="col-lg-12 col-12">
 
@@ -182,7 +182,7 @@
                 <img src="assets/images/tagline/1.png" alt="Sehat">
               </div>
               <div class="about-content flex flex-col gap-1">
-                <a href="#"><h5 class="text-md md:text-2xl font-bold">SEHAT</h5></a>
+                <a href="#"><h5 class="text-md md:text-2xl font-bold hover:text-yellow-500">SEHAT</h5></a>
                 <p>
                   Bahan pangan tersebut dikelola sendiri langsung oleh masyarakat sehingga terjaga
                   prosesnya dan tidak banyak menggunakan pestisida kimia.
@@ -198,7 +198,7 @@
                 <img src="assets/images/tagline/2.png" alt="Alami">
               </div>
               <div class="about-content flex flex-col gap-1">
-                <a href="#"><h5 class="text-md md:text-2xl font-bold">ALAMI</h5></a>
+                <a href="#"><h5 class="text-md md:text-2xl font-bold hover:text-yellow-500">ALAMI</h5></a>
                 <p>
                   Produk langsung dari alam dan diolah dengan media pupuk serta pestisida alami.
                 </p>
@@ -213,7 +213,7 @@
                 <img src="assets/images/tagline/3.png" alt="Ekonomis" class="w-40 h-18">
               </div>
               <div class="about-content flex flex-col gap-1">
-                <a href="#"><h5 class="text-md md:text-2xl font-bold">EKONOMIS</h5></a>
+                <a href="#"><h5 class="text-md md:text-2xl font-bold hover:text-yellow-500">EKONOMIS</h5></a>
                 <p>
                   Mampu menghasilkan bahan pangan yang bisa dikonsumsi sendiri atau dijual
                   dalam jumlah mikro.
