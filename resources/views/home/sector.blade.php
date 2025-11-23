@@ -69,17 +69,18 @@ use Illuminate\Support\Str;
 </section>
 <section class="general-stats w-full h-auto bg-gradient-to-br from-gray-50 to-gray-100 py-8">
     <!-- Header Section -->
-    <div class="header-section text-center mb-8 px-4">
-        <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-            Total Panen {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }} di Kota Bandung
-        </h1>
-        <div class="total-amount bg-white rounded-xl shadow-sm inline-block px-6 py-3">
-            <p class="text-2xl md:text-4xl font-bold text-green-600">
-                {{ number_format($totalHarvest ?? 0, 2, ',', '.') }} Kg
-            </p>
-        </div>
-
+   @if(!request('district'))
+<div class="header-section text-center mb-8 px-4">
+    <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+        Total Panen {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }} di Kota Bandung
+    </h1>
+    <div class="total-amount bg-white rounded-xl shadow-sm inline-block px-6 py-3">
+        <p class="text-2xl md:text-4xl font-bold text-green-600">
+            {{ number_format($totalHarvest ?? 0, 2, ',', '.') }} Kg
+        </p>
     </div>
+</div>
+@endif
 
     <!-- Stats Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8">
