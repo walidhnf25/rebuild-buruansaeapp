@@ -9,6 +9,7 @@ use App\Models\Fish;
 use App\Models\Fruit;
 use App\Models\LiveStock;
 use App\Models\MedicalPlant;
+use App\Models\OlahanHasil;
 use App\Models\Vegetables;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ class SectorController extends Controller
             'ternak' => [LiveStock::class, 'jenis_ternak', 'jumlah_panen_kg', 'jumlah_ternak', 'prakiraan_jumlah_panen'],
             'ikan' => [Fish::class, 'jenis_ikan', 'jumlah_panen_kg', 'jumlah_ikan', 'prakiraan_jumlah_panen'],
             'buah' => [Fruit::class, 'nama_buah', 'jumlah_panen', 'jumlah_tanam', 'prakiraan_jumlah_panen'],
+            'olahan_hasil' => [OlahanHasil::class, 'jenis_olahan', 'jumlah_panen', 'jumlah_tanam', 'prakiraan_jumlah_panen'],
         ];
 
         $commodity = collect();
@@ -362,6 +364,106 @@ class SectorController extends Controller
             'totalHarvest', 'totalHarvestPerKec', 'sector', 'belumPaneninSeed',
             'dataPanenPerKelurahan', 'terlambatPanen', 'dataTotal', 'dataBelumPanenPerKelurahan',
             'dataTelatPanenPerKelurahan', 'startDate', 'endDate', 'dataPanen7HariKedepan', 'belumPaneninKg', 'gambar'
+        ));
+    }
+
+    public function olahanHasil(Request $request)
+    {
+        $sector = $request->query('sector');
+        $selectedCommodity = $request->input('commodity');
+        $selectedDistrict = $request->input('district');
+        $districts = District::all();
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        $commodity = collect();
+        $sectorMap = [
+            'olahan_hasil' => [OlahanHasil::class, 'jenis_olahan', 'jumlah_panen', 'prakiraan_jumlah_panen'],
+        ];
+        $commodity = collect();
+        $data = collect();
+        $gambar = DataKomoditi::where('nama_komoditi', $selectedCommodity)->value('gambar');
+        $totalHarvest = 0;
+        if (array_key_exists($sector, $sectorMap)) {
+            [$model, $columnName, $harvestColumn] = $sectorMap[$sector];
+            try {
+                $dataOlahanHasil = OlahanHasil::first(); // Semua data + semua atribut
+                // dd($dataOlahanHasil);
+                $commodity = $model::select("$columnName as name")
+                    ->distinct()
+                    ->orderBy('name', 'asc')
+                    ->get();
+
+                // List Kelompok per Kecamatan
+                $dataKelompok = DataKelompok::where('kecamatan', $selectedDistrict)
+                                            ->pluck('nama_kelompok', 'id_kelompok');
+
+                // List Kelompok per Kelurahan
+                $dataKelurahan = DataKelompok::where('kecamatan', $selectedDistrict)
+                    ->get(['kelurahan', 'id_kelompok'])
+                    ->groupBy('kelurahan');
+                $dataTotal = $model::when($selectedCommodity, function ($query) use ($selectedCommodity, $columnName) {
+                    return $query->where($columnName, $selectedCommodity);
+                })->get();
+                $totalHarvest = $dataTotal->sum($harvestColumn);
+                // Data total panen komoditas yg dipilih
+            } catch (\Illuminate\Database\QueryException $e) {
+                Log::error('Invalid query in sector map: '.$e->getMessage());
+            }
+        }
+
+        return view('home.olahanhasil', compact(
+            'sector', 'districts', 'selectedCommodity', 'commodity',
+            'startDate', 'endDate', 'gambar', 'totalHarvest', 'dataOlahanHasil'
+        ));
+    }
+
+    public function sampah(Request $request)
+    {
+        $sector = $request->query('sector');
+        $selectedCommodity = $request->input('commodity');
+        $selectedDistrict = $request->input('district');
+        $districts = District::all();
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        $commodity = collect();
+        $sectorMap = [
+            'olahan_hasil' => [OlahanHasil::class, 'jenis_olahan', 'jumlah_panen', 'prakiraan_jumlah_panen'],
+        ];
+        $commodity = collect();
+        $data = collect();
+        $gambar = DataKomoditi::where('nama_komoditi', $selectedCommodity)->value('gambar');
+        $totalHarvest = 0;
+        if (array_key_exists($sector, $sectorMap)) {
+            [$model, $columnName, $harvestColumn] = $sectorMap[$sector];
+            try {
+                $dataOlahanHasil = OlahanHasil::first(); // Semua data + semua atribut
+                // dd($dataOlahanHasil);
+                $commodity = $model::select("$columnName as name")
+                    ->distinct()
+                    ->orderBy('name', 'asc')
+                    ->get();
+
+                // List Kelompok per Kecamatan
+                $dataKelompok = DataKelompok::where('kecamatan', $selectedDistrict)
+                                            ->pluck('nama_kelompok', 'id_kelompok');
+
+                // List Kelompok per Kelurahan
+                $dataKelurahan = DataKelompok::where('kecamatan', $selectedDistrict)
+                    ->get(['kelurahan', 'id_kelompok'])
+                    ->groupBy('kelurahan');
+                $dataTotal = $model::when($selectedCommodity, function ($query) use ($selectedCommodity, $columnName) {
+                    return $query->where($columnName, $selectedCommodity);
+                })->get();
+                $totalHarvest = $dataTotal->sum($harvestColumn);
+                // Data total panen komoditas yg dipilih
+            } catch (\Illuminate\Database\QueryException $e) {
+                Log::error('Invalid query in sector map: '.$e->getMessage());
+            }
+        }
+
+        return view('home.olahanhasil', compact(
+            'sector', 'districts', 'selectedCommodity', 'commodity',
+            'startDate', 'endDate', 'gambar', 'totalHarvest', 'dataOlahanHasil'
         ));
     }
 }

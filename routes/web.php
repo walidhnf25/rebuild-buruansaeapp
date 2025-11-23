@@ -23,6 +23,7 @@ Route::prefix('/')->group(function () {
     Route::get('{sector}', [SectorController::class, 'index'])
         ->where('sector', 'vegetable|medicalplant|fruit|livestock|fish');
 });
+Route::get('/processed-products', [SectorController::class, 'olahanHasil']);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/news', [HomeController::class, 'news'])->name('blog.news');

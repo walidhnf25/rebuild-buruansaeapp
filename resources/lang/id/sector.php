@@ -6,4 +6,5 @@ return [
     'buah' => 'Buah',
     'ikan' => 'Ikan',
     'ternak' => 'Ternak',
+    'olahan_hasil' => 'Olahan Hasil',
 ];

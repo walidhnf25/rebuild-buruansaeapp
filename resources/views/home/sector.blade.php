@@ -5,11 +5,10 @@
 @php
 use Illuminate\Support\Str;
 @endphp
-<div class="navbar w-full h-auto px-4 py-2 bg-[#DC3545] md:relative justify-between flex flex-col md:flex-row items-center">
+<div
+    class="navbar w-full h-auto px-4 py-2 bg-[#DC3545] md:relative justify-between flex flex-col md:flex-row items-center">
     <!-- Logo kiri pojok -->
-    <img src="{{ asset('assets/images/logo.png') }}"
-         alt="logo_dkpp"
-         class="md:size-1/12 size-1/3">
+    <img src="{{ asset('assets/images/logo.png') }}" alt="logo_dkpp" class="md:size-1/12 size-1/3">
 
     <!-- Teks benar-benar di tengah -->
     <p class="md:text-2xl text-white font-bold text-center md:absolute md:left-1/2 md:-translate-x-1/2">
@@ -69,154 +68,161 @@ use Illuminate\Support\Str;
 </section>
 <section class="general-stats w-full h-auto bg-gradient-to-br from-gray-50 to-gray-100 py-8">
     <!-- Header Section -->
-   @if(!request('district'))
-<div class="header-section text-center mb-8 px-4">
-    <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-        Total Panen {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }} di Kota Bandung
-    </h1>
-    <div class="total-amount bg-white rounded-xl shadow-sm inline-block px-6 py-3">
-        <p class="text-2xl md:text-4xl font-bold text-green-600">
-            {{ number_format($totalHarvest ?? 0, 2, ',', '.') }} Kg
-        </p>
+    @if(!request('district'))
+    <div class="header-section text-center mb-8 px-4">
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+            Total Panen {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }} di Kota Bandung
+        </h1>
+        <div class="total-amount bg-white rounded-xl shadow-sm inline-block px-6 py-3">
+            <p class="text-2xl md:text-4xl font-bold text-green-600">
+                {{ number_format($totalHarvest ?? 0, 2, ',', '.') }} Kg
+            </p>
+        </div>
     </div>
-</div>
-@endif
+    @endif
 
     <!-- Stats Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8 h-auto">
         <!-- Total Harvested Card -->
-        <div
-            class="stats-card relative bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
-            <div class="card-header bg-gradient-to-r from-green-500 to-green-600 p-4 ">
-                <div class="flex items-center justify-center">
+         @if(!$selectedCommodity)
+        <div class="p-4 text-gray-500 text-center">
+            Pilih komoditas untuk melihat statistik.
+        </div>
+    @else
 
-                    <h3 class="text-xl font-bold text-white text-center">Total Panen</h3>
+            <div
+                class="stats-card relative bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+                <div class="card-header bg-gradient-to-r from-green-500 to-green-600 p-4 ">
+                    <div class="flex items-center justify-center">
+
+                        <h3 class="text-xl font-bold text-white text-center">Total Panen</h3>
+                    </div>
                 </div>
+                <div class="card-body p-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+                        <div class="icon-section">
+                            <div class="icon-circle md:ml-12">
+                                @if ($selectedCommodity && $gambar)
+                                <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas"
+                                    class="size-28  rounded-xl ">
+                                @else
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-green-600"
+                                    viewBox="0 0 512 512">
+                                    <path fill="currentColor"
+                                        d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
+                                </svg>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="content-section text-center md:text-left flex-1 ">
+                            <p class="text-sm text-gray-600 mb-1">Komoditas</p>
+                            <p class="text-lg font-semibold text-gray-800 mb-2">
+                                {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }}
+                            </p>
+                            <div class="amount-section">
+                                <p class="text-2xl font-bold text-green-600 mb-1">
+                                    {{ number_format($totalHarvestPerKec ?? 0, 2, ',', '.') }} Kg
+                                </p>
+                                <div
+                                    class="status-badge bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
+                                    Berhasil Dipanen
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
-            <div class="card-body p-6">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-3">
-                    <div class="icon-section">
+
+            <!-- Not Harvested Yet Card -->
+            <div
+                class="stats-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+                <div class="card-header bg-gradient-to-r from-amber-500 to-amber-600 p-4">
+                    <div class="flex items-center justify-center">
+                        <h3 class="text-xl font-bold text-white text-center">Total Belum Panen</h3>
+                    </div>
+                </div>
+                <div class="card-body p-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                         <div class="icon-circle md:ml-12">
                             @if ($selectedCommodity && $gambar)
-                            <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas"
+                            <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar-komoditas"
                                 class="size-28  rounded-xl ">
                             @else
-                            <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-green-600"
-                                viewBox="0 0 512 512">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-yellow-600" viewBox="0 0 512 512">
                                 <path fill="currentColor"
                                     d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
                             </svg>
                             @endif
                         </div>
-                    </div>
-                    <div class="content-section text-center md:text-left flex-1 ">
-                        <p class="text-sm text-gray-600 mb-1">Komoditas</p>
-                        <p class="text-lg font-semibold text-gray-800 mb-2">
-                            {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }}
-                        </p>
-                        <div class="amount-section">
-                            <p class="text-2xl font-bold text-green-600 mb-1">
-                                {{ number_format($totalHarvestPerKec ?? 0, 2, ',', '.') }} Kg
+                        <div class="content-section text-center md:text-left flex-1 ">
+                            <p class="text-sm text-gray-600 mb-1">Komoditas</p>
+                            <p class="text-lg font-semibold text-gray-800 mb-2">
+                                {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }}
                             </p>
-                            <div
-                                class="status-badge bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
-                                Berhasil Dipanen
+                            <div class="amount-section">
+                                <div class="flex items-baseline justify-center space-x-2 mb-1">
+                                    <p class="text-2xl font-bold text-amber-600">
+                                        {{ number_format($belumPaneninSeed ?? 0, 0, ',', '.') }} Seed
+
+                                    </p>
+
+                                    <span class="text-sm text-gray-600 font-medium">
+                                        ({{ number_format($belumPaneninKg ?? 0, 2, ',', '.') }} Kg)
+                                    </span>
+                                </div>
+                                <div
+                                    class="status-badge bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
+                                    Dalam Proses
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-
-        </div>
-
-        <!-- Not Harvested Yet Card -->
-        <div
-            class="stats-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
-            <div class="card-header bg-gradient-to-r from-amber-500 to-amber-600 p-4">
-                <div class="flex items-center justify-center">
-                    <h3 class="text-xl font-bold text-white text-center">Total Belum Panen</h3>
-                </div>
-            </div>
-            <div class="card-body p-6">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-3">
-                    <div class="icon-circle md:ml-12">
-                        @if ($selectedCommodity && $gambar)
-                        <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar-komoditas"
-                            class="size-28  rounded-xl ">
-                        @else
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-yellow-600" viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
-                        </svg>
-                        @endif
+            <!-- Late Harvest Card -->
+            <div
+                class="stats-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+                <div class="card-header bg-gradient-to-r from-red-500 to-red-600 p-4">
+                    <div class="flex items-center justify-center">
+                        <h3 class="text-xl font-bold text-white text-center">Total Terlambat Panen</h3>
                     </div>
-                    <div class="content-section text-center md:text-left flex-1 ">
-                        <p class="text-sm text-gray-600 mb-1">Komoditas</p>
-                        <p class="text-lg font-semibold text-gray-800 mb-2">
-                            {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }}
-                        </p>
-                        <div class="amount-section">
-                            <div class="flex items-baseline justify-center space-x-2 mb-1">
-                                <p class="text-2xl font-bold text-amber-600">
-                                    {{ number_format($belumPaneninSeed ?? 0, 0, ',', '.') }} Seed
-
+                </div>
+                <div class="card-body p-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+                        <div class="icon-circle md:ml-12">
+                            @if ($selectedCommodity && $gambar)
+                            <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas"
+                                class="size-28  rounded-xl ">
+                            @else
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-red-600" viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                    d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
+                            </svg>
+                            @endif
+                        </div>
+                        <div class="content-section text-center md:text-left flex-1">
+                            <p class="text-sm text-gray-600 mb-1">Komoditas</p>
+                            <p class="text-lg font-semibold text-gray-800 mb-2">
+                                {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }}
+                            </p>
+                            <div class="amount-section">
+                                <p class="text-2xl font-bold text-red-600 mb-1">
+                                    {{ number_format($terlambatPanen ?? 0, 2, ',', '.') }} Kg
                                 </p>
-
-                                <span class="text-sm text-gray-600 font-medium">
-                                    ({{ number_format($belumPaneninKg ?? 0, 2, ',', '.') }} Kg)
-                                </span>
-                            </div>
-                            <div
-                                class="status-badge bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
-                                Dalam Proses
+                                <div
+                                    class="status-badge bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
+                                    Perlu Perhatian
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
         </div>
-
-        <!-- Late Harvest Card -->
-        <div
-            class="stats-card bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
-            <div class="card-header bg-gradient-to-r from-red-500 to-red-600 p-4">
-                <div class="flex items-center justify-center">
-                    <h3 class="text-xl font-bold text-white text-center">Total Terlambat Panen</h3>
-                </div>
-            </div>
-            <div class="card-body p-6">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-3">
-                    <div class="icon-circle md:ml-12">
-                        @if ($selectedCommodity && $gambar)
-                        <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas"
-                            class="size-28  rounded-xl ">
-                        @else
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-red-600" viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
-                        </svg>
-                        @endif
-                    </div>
-                    <div class="content-section text-center md:text-left flex-1">
-                        <p class="text-sm text-gray-600 mb-1">Komoditas</p>
-                        <p class="text-lg font-semibold text-gray-800 mb-2">
-                            {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }}
-                        </p>
-                        <div class="amount-section">
-                            <p class="text-2xl font-bold text-red-600 mb-1">
-                                {{ number_format($terlambatPanen ?? 0, 2, ',', '.') }} Kg
-                            </p>
-                            <div
-                                class="status-badge bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
-                                Perlu Perhatian
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Date Range Footer -->
     @if ($startDate && $endDate)
@@ -432,11 +438,11 @@ use Illuminate\Support\Str;
 <!-- Modal -->
 <div id="kelurahanModal" class="hidden fixed inset-0 bg-black/40 flex justify-center items-center pb-14">
     <div class="bg-white rounded-xl shadow-lg w-3/4 md:w-1/2 p-6 max-h-[720px] flex flex-col ">
-            <div class=" md:w-full  flex justify-between items-center mb-4 ">
-                <h2 id="modalTitle" class="text-sm font-semibold"></h2>
+        <div class=" md:w-full  flex justify-between items-center mb-4 ">
+            <h2 id="modalTitle" class="text-sm font-semibold"></h2>
 
-                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
-            </div>
+            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
+        </div>
         <div class="flex-1 overflow-auto ">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-green-600">
@@ -444,11 +450,14 @@ use Illuminate\Support\Str;
                         <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama
                             Kelompok</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jumlah Panen
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jumlah
+                            Panen
                         </th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Waktu Panen
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Waktu
+                            Panen
                         </th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi
+                        </th>
                     </tr>
                 </thead>
                 <tbody id="kelurahanTableBody" class="bg-white divide-y divide-gray-200"></tbody>
@@ -459,11 +468,11 @@ use Illuminate\Support\Str;
 
 <div id="kelurahanModalBelumPanen" class="hidden fixed inset-0 bg-black/40 flex justify-center items-center pb-14">
     <div class="bg-white rounded-xl shadow-lg w-3/4 md:w-1/2 p-6 max-h-[720px] flex flex-col ">
-            <div class=" md:w-full  flex justify-between items-center mb-4 ">
-                <h2 id="modalTitle2" class="text-sm font-semibold"></h2>
-                <button onclick="closeModal2()" class="text-gray-500 hover:text-gray-700">✕</button>
-            </div>
-            <p id="subtitle" class="text-sm md:text-md font-semibold mb-2"></p>
+        <div class=" md:w-full  flex justify-between items-center mb-4 ">
+            <h2 id="modalTitle2" class="text-sm font-semibold"></h2>
+            <button onclick="closeModal2()" class="text-gray-500 hover:text-gray-700">✕</button>
+        </div>
+        <p id="subtitle" class="text-sm md:text-md font-semibold mb-2"></p>
         <div class="flex-1 overflow-auto ">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-green-600">
@@ -471,7 +480,8 @@ use Illuminate\Support\Str;
                         <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Kelompok
                             Kelompok</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Prakiraan Waktu Panen
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                            Prakiraan Waktu Panen
                         </th>
 
                     </tr>
@@ -489,12 +499,13 @@ use Illuminate\Support\Str;
     const dataPanenPerKelurahan = @json($dataPanenPerKelurahan);
     const dataBelumPanenPerKelurahan = @json($dataBelumPanenPerKelurahan);
     const waktuPanenValues = dataBelumPanenPerKelurahan.map(item => item.waktuPanen);
-const rawCommodity = document.getElementById('commodity').value;
-const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); // baru kapital tiap kata
-     function showKelurahanBelumPanenModal(kelurahan, total, waktuPanen) {
+    const rawCommodity = document.getElementById('commodity').value;
+    const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); // baru kapital tiap kata
+    function showKelurahanBelumPanenModal(kelurahan, total, waktuPanen) {
         document.getElementById('modalTitle2').textContent = 'Detail Panen Kel. ' + kelurahan;
         document.getElementById('subtitle').innerHTML =
-            'Perkiraan lama masa tanam ' + commodity +  ' <span class="font-bold text-green-500">' + waktuPanenValues + ' hari</span>';
+            'Perkiraan lama masa tanam ' + commodity + ' <span class="font-bold text-green-500">' + waktuPanenValues +
+            ' hari</span>';
         const kelData = dataBelumPanenPerKelurahan.find(item => item.kelurahan === kelurahan);
         const tbody = document.getElementById('kelurahanBelumPanenTableBody');
         tbody.innerHTML = '';
@@ -523,6 +534,7 @@ const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase
 
         document.getElementById('kelurahanModalBelumPanen').classList.remove('hidden');
     }
+
     function showKelurahanModal(kelurahan, total) {
         document.getElementById('modalTitle').textContent = 'Detail Panen Kel. ' + kelurahan;
         const kelData = dataPanenPerKelurahan.find(item => item.kelurahan === kelurahan);
@@ -674,7 +686,8 @@ const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase
     function closeModal() {
         document.getElementById('kelurahanModal').classList.add('hidden');
     }
-     function closeModal2() {
+
+    function closeModal2() {
         document.getElementById('kelurahanModal').classList.add('hidden');
     }
 
@@ -820,8 +833,7 @@ const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase
         type: 'line',
         data: {
             labels: labels1,
-            datasets: [
-                {
+            datasets: [{
                 label: 'Total Belum Panen (kg)',
                 data: dataValues1,
                 fill: true,

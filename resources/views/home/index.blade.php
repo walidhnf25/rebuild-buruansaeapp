@@ -117,7 +117,7 @@
                 <img src="assets/images/result.png" alt="Olahan Hasil" width="130">
               </div>
               <div class="feature-content">
-                <a href="#"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Olahan Hasil</p></a>
+                <a href="/processed-products?sector=olahan_hasil"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Olahan Hasil</p></a>
               </div>
             </div>
           </div>
