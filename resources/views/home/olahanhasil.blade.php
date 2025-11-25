@@ -90,6 +90,7 @@ use Illuminate\Support\Str;
                 </div>
             </div>
             <div class="card-body p-6">
+                  @if ($dataOlahanHasil)
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                     <div class="icon-section">
                         <div class="icon-circle md:ml-12">
@@ -119,12 +120,19 @@ use Illuminate\Support\Str;
                             </div>
                         </div>
                         <div class="date-section mt-3">
-                            <p class="text-sm font-semibold mb-1">Tanggal Produksi :</p>
-                            <p class="text-sm text-black-600 mb-1"> {{ $dataOlahanHasil->tanggal_produksi }}</p>
+
+                                <p class="text-sm font-semibold mb-1">Tanggal Produksi :</p>
+                                <p class="text-sm text-black-600 mb-1"> {{ $dataOlahanHasil->tanggal_produksi }}</p>
+
 
                         </div>
                     </div>
                 </div>
+                @else
+                  <div class="text-center flex items-center justify-center h-28">
+                    <p class="text-lg text-yellow-800 mb-2 text-center  ">Pilih Jenis Olahan Hasil Terlebih dahulu</p>
+                </div>
+                @endif
             </div>
         </div>
         <div class="stats-card relative bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
@@ -134,6 +142,7 @@ use Illuminate\Support\Str;
                 </div>
             </div>
             <div class="card-body p-6">
+                @if($dataOlahanHasil)
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                      <div class="icon-section">
                         <div class="icon-circle md:ml-12">
@@ -150,6 +159,7 @@ use Illuminate\Support\Str;
                         </div>
                     </div>
                     <div class="content-section text-center md:text-left flex-1 ">
+
                         <p class="text-sm text-gray-600 mb-1">Uji Lab</p>
                         <p class="text-md font-semibold text-gray-800 mb-2">
                             {{ $dataOlahanHasil->bahan_dasar }}
@@ -164,6 +174,11 @@ use Illuminate\Support\Str;
                         </p>
                     </div>
                 </div>
+                @else
+                  <div class="text-center flex items-center justify-center h-28">
+                    <p class="text-lg text-yellow-800 mb-2 text-center  ">Pilih Jenis Olahan Hasil Terlebih dahulu</p>
+                </div>
+                @endif
             </div>
         </div>
         <div class="stats-card relative bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
@@ -172,21 +187,29 @@ use Illuminate\Support\Str;
                     <h3 class="text-xl font-bold text-white text-center">Information</h3>
                 </div>
             </div>
-            <div class="card-body p-6">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="card-body p-6 flex justify-center ">
+                @if ($dataOlahanHasil)
+                <div class="flex flex-col md:flex-row items-center justify-center gap-3">
                     <div class="content-section text-left flex-1 ">
-                        <p class="text-sm text-gray-600 mb-1">Bahan Dasar</p>
-                        <p class="text-md font-semibold text-gray-800 mb-2">
-                            {{ $dataOlahanHasil->bahan_dasar }}
-                        </p>
-                         <p class="text-sm text-gray-600 mb-1">Resep:</p>
-                        <p class="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">
-                             {{ $dataOlahanHasil->resep }}
-                        </p>
-                        <p class="text-sm text-yellow-800 mb-2  ">Read More</p>
+                            <p class="text-sm text-gray-600 mb-1">Bahan Dasar</p>
+                            <p class="text-md font-semibold text-gray-800 mb-2">
+                                {{ $dataOlahanHasil->bahan_dasar }}
+                            </p>
+                            <p class="text-sm text-gray-600 mb-1">Resep:</p>
+                            <p class="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">
+                                {{ $dataOlahanHasil->resep }}
+                            </p>
+                            <p class="text-sm text-yellow-800 mb-2  ">Read More</p>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+                @else
+
+                <div class="text-center flex items-center justify-center h-28">
+                    <p class="text-lg text-yellow-800 mb-2 text-center  ">Pilih Jenis Olahan Hasil Terlebih dahulu</p>
+                </div>
+                @endif
         </div>
     </div>
 
