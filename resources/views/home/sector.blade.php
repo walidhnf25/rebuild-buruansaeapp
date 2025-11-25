@@ -5,11 +5,10 @@
 @php
 use Illuminate\Support\Str;
 @endphp
-<div class="navbar w-full h-auto px-4 py-2 bg-[#DC3545] md:relative justify-between flex flex-col md:flex-row items-center">
+<div
+    class="navbar w-full h-auto px-4 py-2 bg-[#DC3545] md:relative justify-between flex flex-col md:flex-row items-center">
     <!-- Logo kiri pojok -->
-    <img src="{{ asset('assets/images/logo.png') }}"
-         alt="logo_dkpp"
-         class="md:size-1/12 size-1/3">
+    <img src="{{ asset('assets/images/logo.png') }}" alt="logo_dkpp" class="md:size-1/12 size-1/3">
 
     <!-- Teks benar-benar di tengah -->
     <p class="md:text-2xl text-white font-bold text-center md:absolute md:left-1/2 md:-translate-x-1/2">
@@ -69,22 +68,24 @@ use Illuminate\Support\Str;
 </section>
 <section class="general-stats w-full h-auto bg-gradient-to-br from-gray-50 to-gray-100 py-8">
     <!-- Header Section -->
-   @if(!request('district'))
-<div class="header-section text-center mb-8 px-4">
-    <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-        Total Panen {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }} di Kota Bandung
-    </h1>
-    <div class="total-amount bg-white rounded-xl shadow-sm inline-block px-6 py-3">
-        <p class="text-2xl md:text-4xl font-bold text-green-600">
-            {{ number_format($totalHarvest ?? 0, 2, ',', '.') }} Kg
-        </p>
+    @if(!request('district'))
+    <div class="header-section text-center mb-8 px-4">
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+            Total Panen {{ Str::title($selectedCommodity ?? 'Semua Komoditas ' . __('sector.' . $sector) .' di Kota Bandung') }}
+        </h1>
+        <div class="total-amount bg-white rounded-xl shadow-sm inline-block px-6 py-3">
+            <p class="text-2xl md:text-4xl font-bold text-green-600">
+                {{ number_format($totalHarvest ?? 0, 2, ',', '.') }} Kg
+            </p>
+        </div>
     </div>
-</div>
-@endif
+    @endif
 
     <!-- Stats Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8 h-auto">
         <!-- Total Harvested Card -->
+
+
         <div
             class="stats-card relative bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
             <div class="card-header bg-gradient-to-r from-green-500 to-green-600 p-4 ">
@@ -94,6 +95,8 @@ use Illuminate\Support\Str;
                 </div>
             </div>
             <div class="card-body p-6">
+                                @if ($selectedCommodity)
+
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                     <div class="icon-section">
                         <div class="icon-circle md:ml-12">
@@ -125,6 +128,11 @@ use Illuminate\Support\Str;
                         </div>
                     </div>
                 </div>
+                 @else
+                <div class="text-center flex items-center justify-center h-28">
+                        <p class="text-lg text-yellow-800 mb-2 text-center  ">Pilih  Komoditas Terlebih dahulu</p>
+                     </div>
+                @endif
             </div>
 
 
@@ -139,6 +147,7 @@ use Illuminate\Support\Str;
                 </div>
             </div>
             <div class="card-body p-6">
+                @if ($selectedCommodity)
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
                     <div class="icon-circle md:ml-12">
                         @if ($selectedCommodity && $gambar)
@@ -159,7 +168,7 @@ use Illuminate\Support\Str;
                         <div class="amount-section">
                             <div class="flex items-baseline justify-center space-x-2 mb-1">
                                 <p class="text-2xl font-bold text-amber-600">
-                                    {{ number_format($belumPaneninSeed ?? 0, 0, ',', '.') }} Seed
+                                    {{ number_format($belumPaneninSeed ?? 0, 0, ',', '.') }} Bibit
 
                                 </p>
 
@@ -174,6 +183,11 @@ use Illuminate\Support\Str;
                         </div>
                     </div>
                 </div>
+                @else
+                <div class="text-center flex items-center justify-center h-28">
+                        <p class="text-lg text-yellow-800 mb-2 text-center  ">Pilih  Komoditas Terlebih dahulu</p>
+                     </div>
+                @endif
             </div>
         </div>
 
@@ -186,34 +200,40 @@ use Illuminate\Support\Str;
                 </div>
             </div>
             <div class="card-body p-6">
+                @if ($selectedCommodity)
                 <div class="flex flex-col md:flex-row items-center justify-between gap-3">
-                    <div class="icon-circle md:ml-12">
-                        @if ($selectedCommodity && $gambar)
-                        <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas"
-                            class="size-28  rounded-xl ">
-                        @else
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-red-600" viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
-                        </svg>
-                        @endif
-                    </div>
-                    <div class="content-section text-center md:text-left flex-1">
-                        <p class="text-sm text-gray-600 mb-1">Komoditas</p>
-                        <p class="text-lg font-semibold text-gray-800 mb-2">
-                            {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }}
-                        </p>
-                        <div class="amount-section">
-                            <p class="text-2xl font-bold text-red-600 mb-1">
-                                {{ number_format($terlambatPanen ?? 0, 2, ',', '.') }} Kg
+                        <div class="icon-circle md:ml-12">
+                            @if ($selectedCommodity && $gambar)
+                            <img src="{{ asset('storage/images/'.$gambar) }}" alt="gambar komoditas"
+                                class="size-28  rounded-xl ">
+                            @else
+                            <svg xmlns="http://www.w3.org/2000/svg" class="size-20 text-red-600" viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                    d="M64 64c0-17.7-14.3-32-32-32S0 46.3 0 64L0 400c0 44.2 35.8 80 80 80l400 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 416c-8.8 0-16-7.2-16-16L64 64zm406.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 210.7 262.6 153.4c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l73.4-73.4 57.4 57.4c12.5 12.5 32.8 12.5 45.3 0l128-128z" />
+                            </svg>
+                            @endif
+                        </div>
+                        <div class="content-section text-center md:text-left flex-1">
+                            <p class="text-sm text-gray-600 mb-1">Komoditas</p>
+                            <p class="text-lg font-semibold text-gray-800 mb-2">
+                                {{ Str::title($selectedCommodity ?? 'Semua Komoditas') }}
                             </p>
-                            <div
-                                class="status-badge bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
-                                Perlu Perhatian
+                            <div class="amount-section">
+                                <p class="text-2xl font-bold text-red-600 mb-1">
+                                    {{ number_format($terlambatPanen ?? 0, 2, ',', '.') }} Kg
+                                </p>
+                                <div
+                                    class="status-badge bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full inline-block">
+                                    Perlu Perhatian
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    @else
+                      <div class="text-center flex items-center justify-center h-28">
+                        <p class="text-lg text-yellow-800 mb-2 text-center  ">Pilih  Komoditas Terlebih dahulu</p>
+                     </div>
+                    @endif
             </div>
         </div>
     </div>
@@ -313,8 +333,7 @@ use Illuminate\Support\Str;
                                     Jumlah</th>
                                 <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                                     Tgl Prakiraan</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                                    Tgl Panen</th>
+
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
@@ -331,13 +350,9 @@ use Illuminate\Support\Str;
                                     </span>
                                 </td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
-                                    {{ optional($tpk['data']->first())->waktu_prakiraan_panen }}</td>
-                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                        {{ optional($tpk['data']->first())->waktu_panen }}
-                                    </span>
+                                    {{ optional($tpk['data']->first())->waktu_prakiraan_panen }}
                                 </td>
+
                             </tr>
                             @empty
                             <tr>
@@ -432,11 +447,11 @@ use Illuminate\Support\Str;
 <!-- Modal -->
 <div id="kelurahanModal" class="hidden fixed inset-0 bg-black/40 flex justify-center items-center pb-14">
     <div class="bg-white rounded-xl shadow-lg w-3/4 md:w-1/2 p-6 max-h-[720px] flex flex-col ">
-            <div class=" md:w-full  flex justify-between items-center mb-4 ">
-                <h2 id="modalTitle" class="text-sm font-semibold"></h2>
+        <div class=" md:w-full  flex justify-between items-center mb-4 ">
+            <h2 id="modalTitle" class="text-sm font-semibold"></h2>
 
-                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
-            </div>
+            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
+        </div>
         <div class="flex-1 overflow-auto ">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-green-600">
@@ -444,11 +459,14 @@ use Illuminate\Support\Str;
                         <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama
                             Kelompok</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jumlah Panen
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Jumlah
+                            Panen
                         </th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Waktu Panen
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Waktu
+                            Panen
                         </th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Aksi
+                        </th>
                     </tr>
                 </thead>
                 <tbody id="kelurahanTableBody" class="bg-white divide-y divide-gray-200"></tbody>
@@ -459,11 +477,13 @@ use Illuminate\Support\Str;
 
 <div id="kelurahanModalBelumPanen" class="hidden fixed inset-0 bg-black/40 flex justify-center items-center pb-14">
     <div class="bg-white rounded-xl shadow-lg w-3/4 md:w-1/2 p-6 max-h-[720px] flex flex-col ">
-            <div class=" md:w-full  flex justify-between items-center mb-4 ">
-                <h2 id="modalTitle2" class="text-sm font-semibold"></h2>
-                <button onclick="closeModal2()" class="text-gray-500 hover:text-gray-700">✕</button>
-            </div>
+        <div class=" md:w-full  flex justify-between items-center mb-4 ">
+            <h2 id="modalTitle2" class="text-sm font-semibold"></h2>
+            <button onclick="closeModal2()" class="text-gray-500 hover:text-gray-700">✕</button>
+        </div>
+        @if ($sector == 'sayur' || $sector == 'tanaman_obat' || $sector == 'buah' || $sector == 'bibit')
             <p id="subtitle" class="text-sm md:text-md font-semibold mb-2"></p>
+        @endif
         <div class="flex-1 overflow-auto ">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-green-600">
@@ -471,7 +491,8 @@ use Illuminate\Support\Str;
                         <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Kelompok
                             Kelompok</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Prakiraan Waktu Panen
+                        <th class="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+                            Prakiraan Waktu Panen
                         </th>
 
                     </tr>
@@ -487,14 +508,20 @@ use Illuminate\Support\Str;
 
 <script>
     const dataPanenPerKelurahan = @json($dataPanenPerKelurahan);
+    const urlParams = new URLSearchParams(window.location.search);
+    const sector = urlParams.get("sector");
+
     const dataBelumPanenPerKelurahan = @json($dataBelumPanenPerKelurahan);
     const waktuPanenValues = dataBelumPanenPerKelurahan.map(item => item.waktuPanen);
-const rawCommodity = document.getElementById('commodity').value;
-const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); // baru kapital tiap kata
-     function showKelurahanBelumPanenModal(kelurahan, total, waktuPanen) {
+    const rawCommodity = document.getElementById('commodity').value;
+    const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); // baru kapital tiap kata
+    function showKelurahanBelumPanenModal(kelurahan, total) {
         document.getElementById('modalTitle2').textContent = 'Detail Panen Kel. ' + kelurahan;
-        document.getElementById('subtitle').innerHTML =
-            'Perkiraan lama masa tanam ' + commodity +  ' <span class="font-bold text-green-500">' + waktuPanenValues + ' hari</span>';
+        if (sector == 'sayur' || sector == 'tanaman_obat' || sector == 'buah' || sector == 'bibit' ) {
+            document.getElementById('subtitle').innerHTML =
+                'Perkiraan lama masa tanam ' + commodity + ' <span class="font-bold text-green-500">' + waktuPanenValues +
+                ' hari</span>';
+        }
         const kelData = dataBelumPanenPerKelurahan.find(item => item.kelurahan === kelurahan);
         const tbody = document.getElementById('kelurahanBelumPanenTableBody');
         tbody.innerHTML = '';
@@ -506,7 +533,7 @@ const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase
                         <tr class="hover:bg-gray-50 transition">
                             <td class="px-4 py-3 text-xs">${index+1}</td>
                             <td class="px-4 py-3 text-xs font-medium">${item.nama_kelompok}</td>
-                            <td class="px-4 py-3 text-xs">${item.waktu_prakiraan_panen ?? '-'} kg</td>
+                            <td class="px-4 py-3 text-xs">${item.waktu_prakiraan_panen ?? '-'} </td>
 
                         </tr>
 
@@ -523,128 +550,373 @@ const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase
 
         document.getElementById('kelurahanModalBelumPanen').classList.remove('hidden');
     }
+
     function showKelurahanModal(kelurahan, total) {
         document.getElementById('modalTitle').textContent = 'Detail Panen Kel. ' + kelurahan;
         const kelData = dataPanenPerKelurahan.find(item => item.kelurahan === kelurahan);
         const tbody = document.getElementById('kelurahanTableBody');
         tbody.innerHTML = '';
-
+        let detailRows = "";
+        let detailButton = "";
         if (kelData && kelData.data.length > 0) {
 
             kelData.data.forEach((item, index) => {
-                const row = `
-                        <tr class="hover:bg-gray-50 transition">
-                            <td class="px-4 py-3 text-xs">${index+1}</td>
-                            <td class="px-4 py-3 text-xs font-medium">${item.nama_kelompok}</td>
-                            <td class="px-4 py-3 text-xs">${item.jumlah_panen ?? '-'} kg</td>
-                            <td class="px-4 py-3 text-xs">${item.waktu_panen ?? '-'}</td>
-                            <td class="px-4 py-3 text-xs text-blue-600 cursor-pointer" onclick="toggleDetail(${index})">
-                                <span id="icon-${index}">⯈</span> Detail
-                            </td>
-                        </tr>
+                let detailButton = "";
+                let detailRows = "";
+                console.log('sector = ', sector);
+                if(sector === 'bibit'){
+                    const row = `
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3 text-xs">${index+1}</td>
+                                <td class="px-4 py-3 text-xs font-medium">${item.nama_kelompok}</td>
+                                <td class="px-4 py-3 text-xs">${item.jumlah_panen ?? '-'} kg</td>
+                                <td class="px-4 py-3 text-xs">${item.waktu_panen ?? '-'}</td>
+                                <td class="px-4 py-3 text-xs text-blue-600 cursor-pointer" onclick="toggleDetail(${index})">
+                                    <span id="icon-${index}">⯈</span> Detail
+                                </td>
+                            </tr>
 
-                        <!-- baris detail disembunyikan dulu -->
-                        <tr id="detail-${index}-1" class="hidden bg-gray-50">
-                            <td colspan="5" class="py-2 px-4">
-                                <div class="overflow-x-auto">
-                                    <p class="font-lg font-bold mb-2">KONSUMSI PRIBADI</p>
-                                    <table class="min-w-full text-sm border border-gray-200 rounded-lg">
-                                        <thead class="bg-gray-100">
-                                            <tr>
-                                                <th class="px-4 py-2 border">Distribusi</th>
-                                                <th class="px-4 py-2 border">Jumlah Berat (kg)</th>
-                                                <th class="px-4 py-2 border">Jumlah KK</th>
-                                                <th class="px-4 py-2 border">Jumlah Orang</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="px-4 py-2 border font-medium">Konsumsi Pribadi</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_berat_kp_kg ?? '-'} Kg</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_kp_kk ?? '-'}</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_orang_kp ?? '-'}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
+                            <!-- baris detail disembunyikan dulu -->
 
+                            <tr id="detail-${index}-1" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">KONSUMSI PRIBADI</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah Pohon</th>
 
-                        </tr>
-                         <tr id="detail-${index}-2" class="hidden bg-gray-50">
-                            <td colspan="5" class="py-2 px-4">
-                                <div class="overflow-x-auto">
-                                    <p class="font-lg font-bold mb-2">DIBAGIKAN</p>
-                                    <table class="min-w-full text-sm border border-gray-200 rounded-lg">
-                                        <thead class="bg-gray-100">
-                                            <tr>
-                                                <th class="px-4 py-2 border">Distribusi</th>
-                                                <th class="px-4 py-2 border">Jumlah Berat (kg)</th>
-                                                <th class="px-4 py-2 border">Jumlah KK</th>
-                                                <th class="px-4 py-2 border">Jumlah Orang</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="px-4 py-2 border font-medium">Stunting</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_berat_dibagikan_stunting_kg ?? '-'} Kg</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_dibagikan_stunting ?? '-'}</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_orang_dibagikan_stunting ?? '-'}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-2 border font-medium">Masyarakat Miskin</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_berat_dibagikan_mm_kg ?? '-'} Kg</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_dibagikan_mm ?? '-'}</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_orang_dibagikan_mm ?? '-'}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-2 border font-medium">Posyandu</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_berat_dibagikan_posyandu_kg ?? '-'} Kg</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_dibagikan_posyandu ?? '-'}</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_orang_dibagikan_posyandu ?? '-'}</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-2 border font-medium">Lansia</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_berat_dibagikan_lansia_kg ?? '-'} Kg</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_dibagikan_lansia ?? '-'}</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_orang_dibagikan_lansia ?? '-'}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr id="detail-${index}-3" class="hidden bg-gray-50">
-                            <td colspan="5" class="py-2 px-4">
-                                <div class="overflow-x-auto">
-                                    <p class="font-lg font-bold mb-2">DIJUAL</p>
-                                    <table class="min-w-full text-sm border border-gray-200 rounded-lg">
-                                        <thead class="bg-gray-100">
-                                            <tr>
-                                                <th class="px-4 py-2 border">Distribusi</th>
-                                                <th class="px-4 py-2 border">Jumlah Berat (kg)</th>
-                                                <th class="px-4 py-2 border">Jumlah Orang</th>
-                                                <th class="px-4 py-2 border">Jumlah Harga Jual</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="px-4 py-2 border font-medium">Penjualan</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_berat_dijual_kg ?? '-'} Kg</td>
-                                                <td class="px-4 py-2 border">${item.jumlah_orang_dijual ?? '-'}</td>
-                                                <td class="px-4 py-2 border">Rp. ${item.harga_jual ?? '-'}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Konsumsi Pribadi</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_kp ?? '-'}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
 
 
-                        </tr>
+                            </tr>
+                             <tr id="detail-${index}-2" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">DIBAGIKAN</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                 <tr>
+                                                    <td class="px-4 py-2 border font-medium">Dibagikan</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_kk ?? '-'} KK</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Masyarakat Sekitar</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_ms ?? '-'} Pohon</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Sekolah</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_sekolah ?? '-'} Pohon</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">PKK</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_pkk ?? '-'} Pohon</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Posyandu</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_posyandu ?? '-'} Pohon</td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="px-4 py-2 border font-medium">Lainnya</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_lainnya ?? '-'} Pohon</td>
+                                                </tr>
+                                                   <tr>
+                                                    <td class="px-4 py-2 border font-medium">Orang</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_orang ?? '-'} Orang</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="detail-${index}-3" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">DIJUAL</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah Dijual</th>
+                                                    <th class="px-4 py-2 border">Jumlah Orang</th>
+                                                    <th class="px-4 py-2 border">Jumlah Kepala Keluarga</th>
+                                                    <th class="px-4 py-2 border">Jumlah Harga Jual</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Penjualan</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_dijual_pohon ?? '-'} Pohon</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_dijual_orang ?? '-'} Orang</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_dijual_kk ?? '-'}</td>
+                                                    <td class="px-4 py-2 border">Rp. ${item.harga_jual ?? '-'}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
 
 
-                    `;
-                tbody.innerHTML += row;
+                            </tr>
+
+
+                        `;
+                    tbody.innerHTML += row;
+
+                }else if  (sector === 'sampah'){
+                    const row = `
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3 text-xs">${index+1}</td>
+                                <td class="px-4 py-3 text-xs font-medium">${item.nama_kelompok}</td>
+                                <td class="px-4 py-3 text-xs">${item.jumlah_panen ?? '-'} kg</td>
+                                <td class="px-4 py-3 text-xs">${item.waktu_panen ?? '-'}</td>
+                                <td class="px-4 py-3 text-xs text-blue-600 cursor-pointer" onclick="toggleDetail(${index})">
+                                    <span id="icon-${index}">⯈</span> Detail
+                                </td>
+                            </tr>
+
+                            <!-- baris detail disembunyikan dulu -->
+
+                            <tr id="detail-${index}-1" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">KONSUMSI PRIBADI</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Konsumsi Pribadi</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_kp ?? '-'} kg</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+                             <tr id="detail-${index}-2" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">DIBAGIKAN</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                 <tr>
+                                                    <td class="px-4 py-2 border font-medium">Dibagikan</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_kk ?? '-'} KK</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Masyarakat Sekitar</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_ms ?? '-'} </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Sekolah</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_sekolah ?? '-'} </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">PKK</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_pkk ?? '-'} </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Posyandu</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_posyandu ?? '-'} </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td class="px-4 py-2 border font-medium">Lainnya</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_lainnya ?? '-'} </td>
+                                                </tr>
+                                                   <tr>
+                                                    <td class="px-4 py-2 border font-medium">Orang</td>
+                                                    <td class="px-4 py-2 border ">${item.jumlah_orang ?? '-'} Orang</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="detail-${index}-3" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">DIJUAL</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah Dijual</th>
+                                                    <th class="px-4 py-2 border">Jumlah Orang</th>
+                                                    <th class="px-4 py-2 border">Jumlah Kepala Keluarga</th>
+                                                    <th class="px-4 py-2 border">Jumlah Harga Jual</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Penjualan</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_dijual_pohon ?? '-'} kg </td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_dijual_orang ?? '-'} Orang</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_dijual_kk ?? '-'}</td>
+                                                    <td class="px-4 py-2 border">Rp. ${item.harga_jual ?? '-'}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+
+
+                        `;
+                    tbody.innerHTML += row;
+
+                }
+                else{
+                    const row = `
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-4 py-3 text-xs">${index+1}</td>
+                                <td class="px-4 py-3 text-xs font-medium">${item.nama_kelompok}</td>
+                                <td class="px-4 py-3 text-xs">${item.jumlah_panen ?? '-'} kg</td>
+                                <td class="px-4 py-3 text-xs">${item.waktu_panen ?? '-'}</td>
+                                <td class="px-4 py-3 text-xs text-blue-600 cursor-pointer" onclick="toggleDetail(${index})">
+                                    <span id="icon-${index}">⯈</span> Detail
+                                </td>
+                            </tr>
+
+                            <!-- baris detail disembunyikan dulu -->
+
+                            <tr id="detail-${index}-1" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">KONSUMSI PRIBADI</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah Berat (kg)</th>
+                                                    <th class="px-4 py-2 border">Jumlah KK</th>
+                                                    <th class="px-4 py-2 border">Jumlah Orang</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Konsumsi Pribadi</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_berat_kp_kg ?? '-'} Kg</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_kp_kk ?? '-'}</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_orang_kp ?? '-'}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+                             <tr id="detail-${index}-2" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">DIBAGIKAN</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah Berat (kg)</th>
+                                                    <th class="px-4 py-2 border">Jumlah KK</th>
+                                                    <th class="px-4 py-2 border">Jumlah Orang</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Stunting</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_berat_dibagikan_stunting_kg ?? '-'} Kg</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_dibagikan_stunting ?? '-'}</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_orang_dibagikan_stunting ?? '-'}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Masyarakat Miskin</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_berat_dibagikan_mm_kg ?? '-'} Kg</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_dibagikan_mm ?? '-'}</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_orang_dibagikan_mm ?? '-'}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Posyandu</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_berat_dibagikan_posyandu_kg ?? '-'} Kg</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_dibagikan_posyandu ?? '-'}</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_orang_dibagikan_posyandu ?? '-'}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Lansia</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_berat_dibagikan_lansia_kg ?? '-'} Kg</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_kepala_keluarga_dibagikan_lansia ?? '-'}</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_orang_dibagikan_lansia ?? '-'}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="detail-${index}-3" class="hidden bg-gray-50">
+                                <td colspan="5" class="py-2 px-4">
+                                    <div class="overflow-x-auto">
+                                        <p class="font-lg font-bold mb-2">DIJUAL</p>
+                                        <table class="min-w-full text-sm border border-gray-200 rounded-lg">
+                                            <thead class="bg-gray-100">
+                                                <tr>
+                                                    <th class="px-4 py-2 border">Distribusi</th>
+                                                    <th class="px-4 py-2 border">Jumlah Berat (kg)</th>
+                                                    <th class="px-4 py-2 border">Jumlah Orang</th>
+                                                    <th class="px-4 py-2 border">Jumlah Harga Jual</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="px-4 py-2 border font-medium">Penjualan</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_berat_dijual_kg ?? '-'} Kg</td>
+                                                    <td class="px-4 py-2 border">${item.jumlah_orang_dijual ?? '-'}</td>
+                                                    <td class="px-4 py-2 border">Rp. ${item.harga_jual ?? '-'}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+
+
+                        `;
+                    tbody.innerHTML += row;
+                }
             });
         } else {
             tbody.innerHTML = `
@@ -674,8 +946,9 @@ const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase
     function closeModal() {
         document.getElementById('kelurahanModal').classList.add('hidden');
     }
-     function closeModal2() {
-        document.getElementById('kelurahanModal').classList.add('hidden');
+
+    function closeModal2() {
+        document.getElementById('kelurahanModalBelumPanen').classList.add('hidden');
     }
 
     // Initialize Total Harvest Chart
@@ -820,8 +1093,7 @@ const commodity = rawCommodity.toLowerCase().replace(/\b\w/g, c => c.toUpperCase
         type: 'line',
         data: {
             labels: labels1,
-            datasets: [
-                {
+            datasets: [{
                 label: 'Total Belum Panen (kg)',
                 data: dataValues1,
                 fill: true,

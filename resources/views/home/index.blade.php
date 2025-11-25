@@ -131,7 +131,7 @@
                 <img src="assets/images/compost.png" alt="Pengolahan Sampah" width="130">
               </div>
               <div class="feature-content">
-                <a href="#"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pengolahan Sampah</p></a>
+                <a href="/waste-processing?sector=sampah"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pengolahan Sampah</p></a>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@
                 <img src="assets/images/nursery.png" alt="Pembibitan" width="120">
               </div>
               <div class="feature-content">
-                <a href="#"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pembibitan</p></a>
+                <a href="/nursery?sector=bibit"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pembibitan</p></a>
               </div>
             </div>
           </div>
