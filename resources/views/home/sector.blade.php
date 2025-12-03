@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 <div
     class="navbar w-full h-auto px-4 py-2 bg-[#DC3545] md:relative justify-between flex flex-col md:flex-row items-center">
     <!-- Logo kiri pojok -->
-    <img src="{{ asset('assets/images/logo.png') }}" alt="logo_dkpp" class="md:size-1/12 size-1/3">
+    <a href="/" class="md:size-1/12 size-1/3"><img src="{{ asset('assets/images/logo.png') }}" alt="logo_dkpp"></a>
 
     <!-- Teks benar-benar di tengah -->
     <p class="md:text-2xl text-white font-bold text-center md:absolute md:left-1/2 md:-translate-x-1/2">

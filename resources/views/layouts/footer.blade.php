@@ -27,7 +27,7 @@
           </a>
       </div> -->
       <div class="col pt-2">
-          <a href="news" class="footer {{ Request::is('*news*') ? 'active-menu':'' }}">
+          <a href="/news" class="footer {{ Request::is('*news*') ? 'active-menu':'' }}">
               <i class="fa-{{ Request::is('*news*') ? 'solid':'light' }} fa-newspaper icon-footer"></i>
               <span class="text-footer">Berita</span>
           </a>

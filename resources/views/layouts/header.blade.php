@@ -5,13 +5,13 @@
       <nav class="navbar navbar-expand-lg">
         <div class="primary-menu">
           <div class="logo">
-            <a href="#"><img src="{{ asset('assets/images/logo.png') }}" alt="logo" width="100"></a>
+            <a href="/"><img src="{{ asset('assets/images/logo.png') }}" alt="logo" width="100"></a>
           </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="icofont-navigation-menu"></i>
           </button>
           <div>
-          
+
             {{-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{strtoupper(Lang::locale())}}
