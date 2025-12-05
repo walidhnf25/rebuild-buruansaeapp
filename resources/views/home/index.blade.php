@@ -37,122 +37,123 @@
       <p class="text-xl md:text-4xl font-bold">Buruan Sae's Sectors</p>
     </div>
     <div class="section-wrapper">
-      <div class="row justify-content-center">
+  <div class="row justify-content-center">
 
-        <!-- Vegetable -->
-        <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.4s">
-          <div class="feature-item">
-            <div class="feature-inner">
-              <div class="feature-thumb  flex justify-center">
-                <img src="assets/images/vegetable.png" alt="Vegetable" width="120">
-              </div>
-              <div class="feature-content">
-                <a href="/vegetable?sector=sayur"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Sayur-sayuran</p></a>
-              </div>
-            </div>
+    <!-- Vegetable -->
+    <a href="/vegetable?sector=sayur" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.4s">
+      <div class="feature-item">
+        <div class="feature-inner">
+          <div class="feature-thumb flex justify-center">
+            <img src="assets/images/vegetable.png" alt="Vegetable" width="120">
+          </div>
+          <div class="feature-content">
+            <p class="text-md md:text-2xl font-bold hover:text-yellow-500">Sayur-sayuran</p>
           </div>
         </div>
-
-        <!-- Tanaman Obat -->
-        <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
-          <div class="feature-item">
-            <div class="feature-inner">
-              <div class="feature-thumb flex justify-center">
-                <img src="assets/images/herbplant.png" alt="Tanaman Obat" width="100">
-              </div>
-              <div class="feature-content">
-                <a href="/medicalplant?sector=tanaman_obat"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Tanaman Obat</p></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fruit -->
-        <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="feature-item">
-            <div class="feature-inner">
-              <div class="feature-thumb flex justify-center">
-                <img src="assets/images/fruit.png" alt="Fruit" width="115">
-              </div>
-              <div class="feature-content">
-                <a href="/fruit?sector=buah"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Buah</p></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ternak -->
-        <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
-          <div class="feature-item">
-            <div class="feature-inner">
-              <div class="feature-thumb flex justify-center">
-                <img src="assets/images/animal.png" alt="Ternak" width="125">
-              </div>
-              <div class="feature-content">
-                <a href="/livestock?sector=ternak"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Ternak</p></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Ikan -->
-        <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.6s">
-          <div class="feature-item">
-            <div class="feature-inner">
-              <div class="feature-thumb flex justify-center">
-                <img src="assets/images/fish.png" alt="Ikan" width="120">
-              </div>
-              <div class="feature-content">
-                <a href="/fish?sector=ikan"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Ikan</p></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Olahan Hasil -->
-        <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
-          <div class="feature-item">
-            <div class="feature-inner">
-              <div class="feature-thumb flex justify-center">
-                <img src="assets/images/result.png" alt="Olahan Hasil" width="130">
-              </div>
-              <div class="feature-content">
-                <a href="#" id="comingSoonBtn"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Olahan Hasil</p></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pengolahan Sampah -->
-        <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
-          <div class="feature-item">
-            <div class="feature-inner">
-              <div class="feature-thumb flex justify-center">
-                <img src="assets/images/compost.png" alt="Pengolahan Sampah" width="130">
-              </div>
-              <div class="feature-content">
-                <a href="/waste-processing?sector=sampah"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pengolahan Sampah</p></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pembibitan -->
-        <div class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
-          <div class="feature-item">
-            <div class="feature-inner">
-              <div class="feature-thumb flex justify-center">
-                <img src="assets/images/nursery.png" alt="Pembibitan" width="120">
-              </div>
-              <div class="feature-content">
-                <a href="/nursery?sector=bibit"><p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pembibitan</p></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </div>
+    </a>
+
+    <!-- Tanaman Obat -->
+    <a href="/medicalplant?sector=tanaman_obat" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+      <div class="feature-item">
+        <div class="feature-inner">
+          <div class="feature-thumb flex justify-center">
+            <img src="assets/images/herbplant.png" alt="Tanaman Obat" width="100">
+          </div>
+          <div class="feature-content">
+            <p class="text-md md:text-2xl font-bold hover:text-yellow-500">Tanaman Obat</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Fruit -->
+    <a href="/fruit?sector=buah" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.5s">
+      <div class="feature-item">
+        <div class="feature-inner">
+          <div class="feature-thumb flex justify-center">
+            <img src="assets/images/fruit.png" alt="Fruit" width="115">
+          </div>
+          <div class="feature-content">
+            <p class="text-md md:text-2xl font-bold hover:text-yellow-500">Buah</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Ternak -->
+    <a href="/livestock?sector=ternak" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+      <div class="feature-item">
+        <div class="feature-inner">
+          <div class="feature-thumb flex justify-center">
+            <img src="assets/images/animal.png" alt="Ternak" width="125">
+          </div>
+          <div class="feature-content">
+            <p class="text-md md:text-2xl font-bold hover:text-yellow-500">Ternak</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Ikan -->
+    <a href="/fish?sector=ikan" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.6s">
+      <div class="feature-item">
+        <div class="feature-inner">
+          <div class="feature-thumb flex justify-center">
+            <img src="assets/images/fish.png" alt="Ikan" width="120">
+          </div>
+          <div class="feature-content">
+            <p class="text-md md:text-2xl font-bold hover:text-yellow-500">Ikan</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Olahan Hasil -->
+    <a href="#" id="comingSoonBtn" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+      <div class="feature-item">
+        <div class="feature-inner">
+          <div class="feature-thumb flex justify-center">
+            <img src="assets/images/result.png" alt="Olahan Hasil" width="130">
+          </div>
+          <div class="feature-content">
+            <p class="text-md md:text-2xl font-bold hover:text-yellow-500">Olahan Hasil</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Pengolahan Sampah -->
+    <a href="/waste-processing?sector=sampah" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+      <div class="feature-item">
+        <div class="feature-inner">
+          <div class="feature-thumb flex justify-center">
+            <img src="assets/images/compost.png" alt="Pengolahan Sampah" width="130">
+          </div>
+          <div class="feature-content">
+            <p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pengolahan Sampah</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Pembibitan -->
+    <a href="/nursery?sector=bibit" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+      <div class="feature-item">
+        <div class="feature-inner">
+          <div class="feature-thumb flex justify-center">
+            <img src="assets/images/nursery.png" alt="Pembibitan" width="120">
+          </div>
+          <div class="feature-content">
+            <p class="text-md md:text-2xl font-bold hover:text-yellow-500">Pembibitan</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
   </div>
 </section>
 
