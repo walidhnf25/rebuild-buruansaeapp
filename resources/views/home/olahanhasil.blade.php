@@ -17,52 +17,59 @@ use Illuminate\Support\Str;
 
 <section class="filter w-full h-auto bg-[#F8F8F8] ">
     <form action="" method="GET"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center flex items-end  h-auto p-4 lg:px-10 lg:py-7 ">
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center flex items-end h-auto p-4 lg:px-10 lg:py-7">
+
         <input type="hidden" name="sector" value="{{ $sector }}">
 
+        {{-- Commodity --}}
         <div class="commodity flex gap-3 flex-col items-center">
             <label class="text-black text-lg font-semibold">Choose Commodity</label>
             <select name="commodity" id="commodity" class="text-black rounded p-2 w-full max-w-xs">
                 <option value="">-- Select Commodity --</option>
                 @foreach ($commodity as $cm)
-                <option value="{{ $cm->name }}" {{ request('commodity') == $cm->name ? 'selected' : '' }}>
-                    {{ $cm->name }}
-                </option>
+                    <option value="{{ $cm->name }}" {{ request('commodity') == $cm->name ? 'selected' : '' }}>
+                        {{ $cm->name }}
+                    </option>
                 @endforeach
             </select>
         </div>
 
-
+        {{-- Start Date --}}
         <div class="start-date flex gap-3 flex-col items-center">
             <label class="text-black text-lg font-semibold">Choose Start Date</label>
-            <input type="date" name="start_date" id="start_date" class="rounded p-2 w-full max-w-xs"
+            <input type="text" name="start_date" id="start_date"
+                class="rounded p-2 w-full max-w-xs"
                 value="{{ request('start_date') }}">
         </div>
 
-
+        {{-- End Date --}}
         <div class="end-date flex gap-3 flex-col items-center">
             <label class="text-black text-lg font-semibold">Choose End Date</label>
-            <input type="date" name="end_date" id="end_date" class="rounded p-2 w-full max-w-xs"
+            <input type="text" name="end_date" id="end_date"
+                class="rounded p-2 w-full max-w-xs"
                 value="{{ request('end_date') }}">
         </div>
 
-
+        {{-- District --}}
         <div class="filter flex gap-3 flex-col items-center">
             <label class="text-black text-lg font-semibold">Choose Kecamatan</label>
             <select name="district" id="district" class="text-black rounded p-2 w-full max-w-xs">
                 <option value="">-- Select District --</option>
                 @foreach ($districts as $ds)
-                <option value="{{ $ds->name }}" {{ request('district') == $ds->name ? 'selected' : '' }}>
-                    {{ $ds->name }}
-                </option>
+                    <option value="{{ $ds->name }}" {{ request('district') == $ds->name ? 'selected' : '' }}>
+                        {{ $ds->name }}
+                    </option>
                 @endforeach
             </select>
         </div>
+
+        {{-- Button --}}
         <div class="col-span-2 md:col-span-4 flex justify-center mt-4">
             <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
                 Filter
             </button>
         </div>
+
     </form>
 </section>
 <section class="general-stats w-full h-auto bg-gradient-to-br from-gray-50 to-gray-100 py-8">
@@ -223,8 +230,26 @@ use Illuminate\Support\Str;
     </div>
     @endif
 </section>
-
-<script>
-
-</script>
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // TomSelect dropdown (optional)
+    new TomSelect("#commodity");
+
+    new TomSelect("#district");
+
+    // Flatpickr date picker
+    flatpickr("#start_date", {
+        dateFormat: "Y-m-d"
+    });
+
+    flatpickr("#end_date", {
+        dateFormat: "Y-m-d"
+    });
+
+});
+</script>
+@endpush
