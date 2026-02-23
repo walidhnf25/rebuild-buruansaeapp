@@ -40,7 +40,7 @@
   <div class="row justify-content-center">
 
     <!-- Vegetable -->
-    <a href="/vegetable?sector=sayur" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.4s">
+    <a href="/vegetable?sector=sayur" data-id="sector-vegetable" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.4s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -54,7 +54,7 @@
     </a>
 
     <!-- Tanaman Obat -->
-    <a href="/medicalplant?sector=tanaman_obat" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+    <a href="/medicalplant?sector=tanaman_obat" data-id="sector-medicalplant" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -68,7 +68,7 @@
     </a>
 
     <!-- Fruit -->
-    <a href="/fruit?sector=buah" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.5s">
+    <a href="/fruit?sector=buah" data-id="sector-fruit" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.5s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -82,7 +82,7 @@
     </a>
 
     <!-- Ternak -->
-    <a href="/livestock?sector=ternak" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+    <a href="/livestock?sector=ternak" data-id="sector-livestock" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -96,7 +96,7 @@
     </a>
 
     <!-- Ikan -->
-    <a href="/fish?sector=ikan" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.6s">
+    <a href="/fish?sector=ikan" data-id="sector-fish" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.6s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -110,7 +110,7 @@
     </a>
 
     <!-- Olahan Hasil -->
-    <a href="#" id="comingSoonBtn" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+    <a href="#" id="comingSoonBtn" data-id="sector-result" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -124,7 +124,7 @@
     </a>
 
     <!-- Pengolahan Sampah -->
-    <a href="/waste-processing?sector=sampah" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+    <a href="/waste-processing?sector=sampah" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -138,7 +138,7 @@
     </a>
 
     <!-- Pembibitan -->
-    <a href="/nursery?sector=bibit" class="col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+    <a href="/nursery?sector=bibit" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
