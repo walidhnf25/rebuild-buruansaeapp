@@ -2,6 +2,25 @@
 
 @section('page_name', 'HOME')
 @section('content')
+@push('styles')
+<style>
+  /* Menjadikan elemen di dalam link 'transparan' terhadap klik mouse */
+ [id^="sector-"] {
+    display: block;
+    pointer-events: auto !important;
+  }
+
+  /* Pastikan saat parent di-hover, teks di dalamnya berubah warna */
+  [id^="sector-"]:hover .feature-content p {
+    color: #eab308 !important; /* Warna kuning yellow-500 */
+  }
+
+  /* Gambar dibuat tembus klik agar tidak mengganggu selector Katalon */
+  [id^="sector-"] img {
+    pointer-events: none !important;
+  }
+</style>
+@endpush
 @include('layouts.header')
 <div style="max-width: 2048px; margin:auto;">
   <div class="banner banner-pad-1 bg_img md:h-screen content-center">
@@ -40,7 +59,7 @@
   <div class="row justify-content-center">
 
     <!-- Vegetable -->
-    <a href="/vegetable?sector=sayur" data-id="sector-vegetable" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.4s">
+    <a href="/vegetable?sector=sayur" id="sector-vegetable" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.4s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -54,7 +73,7 @@
     </a>
 
     <!-- Tanaman Obat -->
-    <a href="/medicalplant?sector=tanaman_obat" data-id="sector-medicalplant" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+    <a href="/medicalplant?sector=tanaman_obat" id="sector-medicalplant" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -68,7 +87,7 @@
     </a>
 
     <!-- Fruit -->
-    <a href="/fruit?sector=buah" data-id="sector-fruit" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.5s">
+    <a href="/fruit?sector=buah" id="sector-fruit" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.5s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -82,7 +101,7 @@
     </a>
 
     <!-- Ternak -->
-    <a href="/livestock?sector=ternak" data-id="sector-livestock" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+    <a href="/livestock?sector=ternak" id="sector-livestock" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -96,7 +115,7 @@
     </a>
 
     <!-- Ikan -->
-    <a href="/fish?sector=ikan" data-id="sector-fish" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.6s">
+    <a href="/fish?sector=ikan" id="sector-fish" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.6s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -110,7 +129,7 @@
     </a>
 
     <!-- Olahan Hasil -->
-    <a href="#" id="comingSoonBtn" data-id="sector-result" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
+    <a href="#" id="comingSoonBtn" id="sector-result" class="block col-xl-6 col-md-6 col-6 wow fadeInUp" data-wow-delay="0.7s">
       <div class="feature-item">
         <div class="feature-inner">
           <div class="feature-thumb flex justify-center">
@@ -327,6 +346,9 @@
     <div id="kecamatan-cards" class="row"></div>
   </div>
 </div>
+
+@endsection
+@push('scripts')
 <script>
   document.getElementById('comingSoonBtn').addEventListener('click', function(e) {
     e.preventDefault();
@@ -337,5 +359,12 @@
       confirmButtonText: "OK"
     });
   });
+if (window.jQuery) {
+        $('.wow').removeClass('wow').css({
+            'visibility': 'visible',
+            'animation-name': 'none',
+            'opacity': '1'
+        });
+    }
 </script>
-@endsection
+@endpush
